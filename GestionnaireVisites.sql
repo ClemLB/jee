@@ -53,7 +53,7 @@ CREATE TABLE `Reservations` (
   `idVisite` int(20) NOT NULL,
   `idClient` int(20) NOT NULL,
   `nombreplaces` int(10) NOT NULL,
-  `booleenPaiementEffctue` tinyint(1) NOT NULL DEFAULT '0',
+  `booleenPaiementEffectue` tinyint(1) NOT NULL DEFAULT '0',
   `idReservation` int(20) NOT NULL,
   `codeReservation` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
