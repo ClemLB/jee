@@ -32,7 +32,7 @@ CREATE TABLE `Clients` (
   `prenom` varchar(20) NOT NULL,
   `email` varchar(60) NOT NULL,
   `motDePasse` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
