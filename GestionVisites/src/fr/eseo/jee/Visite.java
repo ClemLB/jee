@@ -7,7 +7,7 @@ public class Visite {
 	private String typeVisite;
 	private String ville;
 	private String dateVisite;
-	private float prix;
+	private double prix;
 
 	// Getters & Setters
 
@@ -43,11 +43,11 @@ public class Visite {
 		this.dateVisite = dateVisite;
 	}
 
-	public float getPrix() {
+	public double getPrix() {
 		return this.prix;
 	}
 
-	public void setPrix(float prix) {
-		this.prix = prix;
+	public void setPrix(double d) {
+		this.prix = d;
 	}
 }
