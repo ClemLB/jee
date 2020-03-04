@@ -32,7 +32,7 @@ CREATE TABLE `Clients` (
   `prenom` varchar(20) CHARACTER SET utf8 NOT NULL,
   `email` varchar(60) CHARACTER SET utf8 NOT NULL,
   `motDePasse` varchar(20) CHARACTER SET utf8 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `Clients`
@@ -91,7 +91,8 @@ INSERT INTO `Visites` (`typeVisite`, `ville`, `dateVisite`, `prixVisite`, `idVis
 -- Index pour la table `Clients`
 --
 ALTER TABLE `Clients`
-  ADD PRIMARY KEY (`idClient`);
+  ADD PRIMARY KEY (`idClient`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- Index pour la table `Reservations`

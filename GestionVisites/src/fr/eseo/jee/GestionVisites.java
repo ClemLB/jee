@@ -181,7 +181,13 @@ public class GestionVisites {
 			return Collections.emptyList();
 		}
 	}
-
+	
+	/**
+	 * Permet la réservation d'une visite et l'insertion dans la db
+	 * @param uneReservation
+	 * @return
+	 */
+	
 	public String reserverVisite(ReservationVisite uneReservation) {
 		try {
 			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
@@ -242,6 +248,12 @@ public class GestionVisites {
 		return null;
 	}
 
+	/**
+	 * Permet de payer la réservation avec le code de reservation passer en paramètre
+	 * @param codeReservation
+	 * @return
+	 */
+	
 	public String payerVisite(String codeReservation) {
 		try {
 			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
@@ -268,6 +280,12 @@ public class GestionVisites {
 
 		return "Problème lors du paiement !";
 	}
+	
+	/**
+	 * Permet d'annuler une réservation à partir de son code de réservation
+	 * @param codeReservation
+	 * @return
+	 */
 
 	public boolean annulerVisite(String codeReservation) {
 		try {
