@@ -50,5 +50,4 @@ public class Visite {
 	public void setPrix(float prix) {
 		this.prix = prix;
 	}
-
 }
