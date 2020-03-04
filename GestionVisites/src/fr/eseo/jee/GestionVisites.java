@@ -13,7 +13,7 @@ import com.mysql.cj.jdbc.Driver;
 
 public class GestionVisites {
 
-	static final String DB_ADRESSE = "192.168.56.101";
+	static final String DB_ADRESSE = "10.0.2.15";
 
 	/**
 	 * Prend une visite en paramètre et renvoie toutes les visites ayant un
@@ -26,13 +26,20 @@ public class GestionVisites {
 		try {
 			List<Visite> visites = new ArrayList<>();
 			List<String> param = new ArrayList<>();
-			param.add(uneVisite.getCodeVisite());
-			param.add(uneVisite.getTypeVisite());
-			param.add(uneVisite.getVille());
-			param.add(Double.toString(uneVisite.getPrix()));
+			String codeVisite = uneVisite.getCodeVisite();
+			String typeVisite = uneVisite.getTypeVisite();
+			String ville = uneVisite.getVille();
+			String prix = Double.toString(uneVisite.getPrix());
+			param.add(codeVisite);
+			param.add(typeVisite);
+			param.add(ville);
+			param.add(prix);
+			System.out.println(param);
 			int nonNull = 0;
 			for (String s : param) {
-				if (!s.isEmpty()) {
+				if (s == null || s.equals("0.0")) {
+					s = "";
+				} else {
 					nonNull++;
 				}
 			}
@@ -133,7 +140,7 @@ public class GestionVisites {
 				}
 				break;
 			case 1:
-				if (!uneVisite.getCodeVisite().isEmpty()) {
+				if (codeVisite != null) {
 					sql += "codeVisite = \"" + uneVisite.getCodeVisite() + "\"";
 				} else if (!uneVisite.getTypeVisite().isEmpty()) {
 					sql += "typeVisite = \"" + uneVisite.getTypeVisite() + "\"";
