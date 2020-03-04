@@ -8,7 +8,9 @@ import java.sql.Statement;
 import java.util.List;
 
 public class GestionVisites {
-
+	
+	static final String DB_ADRESSE = "192.168.56.101";
+	
 	/**
 	 * Prend une visite en paramètre
 	 * @param uneVisiste
@@ -23,7 +25,7 @@ public class GestionVisites {
 		try 
 		{
 			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
-			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/Biblio?user=admin&password=admin");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://"+ DB_ADRESSE +"/GestionnaireVisites?user=admin&password=admin");
 			
 			Statement stmt = conn.createStatement();
 			String table = "Reservations";
@@ -90,7 +92,7 @@ public class GestionVisites {
 		try 
 		{
 			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
-			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/Biblio?user=admin&password=admin");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://"+ DB_ADRESSE +"/GestionnaireVisites?user=admin&password=admin");
 			
 			Statement stmt = conn.createStatement();
 			String table = "Reservations";
@@ -119,7 +121,7 @@ public class GestionVisites {
 		try 
 		{
 			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
-			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/Biblio?user=admin&password=admin");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://"+ DB_ADRESSE +"/GestionnaireVisites?user=admin&password=admin");
 			
 			Statement stmt = conn.createStatement();
 			String table = "Reservations";
