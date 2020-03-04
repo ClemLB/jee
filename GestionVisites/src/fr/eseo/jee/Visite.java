@@ -15,7 +15,7 @@ public class Visite {
 		return this.codeVisite;
 	}
 	public void setCodeVisite(String codeVisite) {
-		this.codeVisite = codeVisite;
+		this.codeVisite = codeVisite;	
 	}
 	public String getTypeVisite() {
 		return this.typeVisite;
