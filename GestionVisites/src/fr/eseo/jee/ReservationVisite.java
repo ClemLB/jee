@@ -4,7 +4,7 @@ public class ReservationVisite {
 
 	// Attributs
 	private String codeReservation;
-	private String codeVisite;
+	private int codeVisite;
 	private String codeClient;
 	private int nbPersonnes;
 	private boolean paiementEffectue;
@@ -18,11 +18,11 @@ public class ReservationVisite {
 		this.codeReservation = codeReservation;
 	}
 
-	public String getCodeVisite() {
+	public int getCodeVisite() {
 		return codeVisite;
 	}
 
-	public void setCodeVisite(String codeVisite) {
+	public void setCodeVisite(int codeVisite) {
 		this.codeVisite = codeVisite;
 	}
 
