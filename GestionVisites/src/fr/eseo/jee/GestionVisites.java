@@ -114,7 +114,32 @@ public class GestionVisites {
 		return "Problème lors du paiement !";
 	}
 
-	public boolean annulerVisite(String codeReservation) {
-
+	public boolean annulerVisite(String codeReservation) 
+	{
+		try 
+		{
+			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/Biblio?user=admin&password=admin");
+			
+			Statement stmt = conn.createStatement();
+			String table = "Reservations";
+			
+			
+			// Attributs de la réservation
+			
+			String query = "DELETE FROM " + table + " WHERE codeReservation = " + codeReservation;
+			ResultSet res = stmt.executeQuery(query);
+		
+			res.close();
+			stmt.close();
+			conn.close();
+			
+			return true;
+		} catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		
+		return false;
 	}
 }
