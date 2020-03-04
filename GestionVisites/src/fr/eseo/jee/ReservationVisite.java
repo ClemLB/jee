@@ -2,12 +2,14 @@ package fr.eseo.jee;
 
 public class ReservationVisite {
 
+	// Attributs
 	private String codeReservation;
 	private String codeVisite;
 	private String codeClient;
 	private int nbPersonnes;
 	private boolean paiementEffectue;
 
+	// Accesseurs
 	public String getCodeReservation() {
 		return codeReservation;
 	}
