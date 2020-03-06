@@ -13,7 +13,7 @@ import com.mysql.cj.jdbc.Driver;
 
 public class GestionVisites {
 
-	static final String DB_ADRESSE = "10.0.2.15";
+	static final String DB_ADRESSE = "192.168.4.197";
 
 	/**
 	 * Prend une visite en paramètre et renvoie toutes les visites ayant un
@@ -23,139 +23,135 @@ public class GestionVisites {
 	 * @return List<Visite>
 	 */
 	public List<Visite> trouverVisite(Visite uneVisite) {
-		try {
-			List<Visite> visites = new ArrayList<>();
-			List<String> param = new ArrayList<>();
-			String codeVisite = uneVisite.getCodeVisite();
-			String typeVisite = uneVisite.getTypeVisite();
-			String ville = uneVisite.getVille();
-			String prix = Double.toString(uneVisite.getPrix());
-			param.add(codeVisite);
-			param.add(typeVisite);
-			param.add(ville);
-			param.add(prix);
-			System.out.println(param);
-			int nonNull = 0;
-			for (String s : param) {
-				if (s == null || s.equals("0.0")) {
-					s = "";
-				} else {
-					nonNull++;
-				}
+
+		List<Visite> visites = new ArrayList<>();
+		List<String> param = new ArrayList<>();
+		String codeVisite = uneVisite.getCodeVisite();
+		String typeVisite = uneVisite.getTypeVisite();
+		String ville = uneVisite.getVille();
+		String prix = Double.toString(uneVisite.getPrix());
+		param.add(codeVisite);
+		param.add(typeVisite);
+		param.add(ville);
+		param.add(prix);
+		System.out.println(param);
+		int nonNull = 0;
+		for (String s : param) {
+			if (s == null || s.equals("0.0")) {
+				s = "";
+			} else {
+				nonNull++;
 			}
-			String sql = "SELECT * FROM Visites WHERE ";
-			switch (nonNull) {
-			case 5:
-				sql += "codeVisite = \"" + uneVisite.getCodeVisite() + "\" AND typeVisite = \""
-						+ uneVisite.getTypeVisite() + "\" AND ville = \"" + uneVisite.getVille()
+		}
+		String sql = "SELECT * FROM Visites WHERE ";
+		switch (nonNull) {
+		case 5:
+			sql += "codeVisite = \"" + uneVisite.getCodeVisite() + "\" AND typeVisite = \"" + uneVisite.getTypeVisite()
+					+ "\" AND ville = \"" + uneVisite.getVille() + "\" AND dateVisite = \"" + uneVisite.getDateVisite()
+					+ "\" AND prix = \"" + uneVisite.getPrix() + "\"";
+			break;
+		case 4:
+			if (uneVisite.getCodeVisite().isEmpty()) {
+				sql += "typeVisite = \"" + uneVisite.getTypeVisite() + "\" AND ville = \"" + uneVisite.getVille()
 						+ "\" AND dateVisite = \"" + uneVisite.getDateVisite() + "\" AND prix = \""
 						+ uneVisite.getPrix() + "\"";
-				break;
-			case 4:
-				if (uneVisite.getCodeVisite().isEmpty()) {
-					sql += "typeVisite = \"" + uneVisite.getTypeVisite() + "\" AND ville = \"" + uneVisite.getVille()
-							+ "\" AND dateVisite = \"" + uneVisite.getDateVisite() + "\" AND prix = \""
-							+ uneVisite.getPrix() + "\"";
-				} else if (uneVisite.getTypeVisite().isEmpty()) {
-					sql += "codeVisite = \"" + uneVisite.getCodeVisite() + "\" AND ville = \"" + uneVisite.getVille()
-							+ "\" AND dateVisite = \"" + uneVisite.getDateVisite() + "\" AND prix = \""
-							+ uneVisite.getPrix() + "\"";
-				} else if (uneVisite.getVille().isEmpty()) {
-					sql += "codeVisite = \"" + uneVisite.getCodeVisite() + "\" AND typeVisite = \""
-							+ uneVisite.getTypeVisite() + "\" AND dateVisite = \"" + uneVisite.getDateVisite()
-							+ "\" AND prix = \"" + uneVisite.getPrix() + "\"";
-				} else if (uneVisite.getDateVisite().isEmpty()) {
-					sql += "codeVisite = \"" + uneVisite.getCodeVisite() + "\" AND typeVisite = \""
-							+ uneVisite.getTypeVisite() + "\" AND ville = \"" + uneVisite.getVille()
-							+ "\" AND prix = \"" + uneVisite.getPrix() + "\"";
-				} else {
-					sql += "codeVisite = \"" + uneVisite.getCodeVisite() + "\" AND typeVisite = \""
-							+ uneVisite.getTypeVisite() + "\" AND ville = \"" + uneVisite.getVille()
-							+ "\" AND dateVisite = \"" + uneVisite.getDateVisite() + "\"";
-				}
-				break;
-			case 3:
-				if (uneVisite.getCodeVisite().isEmpty() && uneVisite.getTypeVisite().isEmpty()) {
-					sql += "ville = \"" + uneVisite.getVille() + "\" AND dateVisite = \"" + uneVisite.getDateVisite()
-							+ "\" AND prix = \"" + uneVisite.getPrix() + "\"";
-				} else if (uneVisite.getCodeVisite().isEmpty() && uneVisite.getVille().isEmpty()) {
-					sql += "typeVisite = \"" + uneVisite.getTypeVisite() + "\" AND dateVisite = \""
-							+ uneVisite.getDateVisite() + "\" AND prix = \"" + uneVisite.getPrix() + "\"";
-				} else if (uneVisite.getCodeVisite().isEmpty() && uneVisite.getDateVisite().isEmpty()) {
-					sql += "AND typeVisite = \"" + uneVisite.getTypeVisite() + "\" AND ville = \""
-							+ uneVisite.getVille() + "\" AND prix = \"" + uneVisite.getPrix() + "\"";
-				} else if (uneVisite.getCodeVisite().isEmpty() && Double.toString(uneVisite.getPrix()).isEmpty()) {
-					sql += "typeVisite = \"" + uneVisite.getTypeVisite() + "\" AND ville = \"" + uneVisite.getVille()
-							+ "\" AND dateVisite = \"" + uneVisite.getDateVisite() + "\"";
-				} else if (uneVisite.getTypeVisite().isEmpty() && uneVisite.getVille().isEmpty()) {
-					sql += "codeVisite = \"" + uneVisite.getCodeVisite() + "\" AND dateVisite = \""
-							+ uneVisite.getDateVisite() + "\" AND prix = \"" + uneVisite.getPrix() + "\"";
-				} else if (uneVisite.getTypeVisite().isEmpty() && uneVisite.getDateVisite().isEmpty()) {
-					sql += "codeVisite = \"" + uneVisite.getCodeVisite() + "\" AND ville = \"" + uneVisite.getVille()
-							+ "\" AND prix = \"" + uneVisite.getPrix() + "\"";
-				} else if (uneVisite.getTypeVisite().isEmpty() && Double.toString(uneVisite.getPrix()).isEmpty()) {
-					sql += "codeVisite = \"" + uneVisite.getCodeVisite() + "\" AND ville = \"" + uneVisite.getVille()
-							+ "\" AND dateVisite = \"" + uneVisite.getDateVisite() + "\"";
-				} else if (uneVisite.getVille().isEmpty() && uneVisite.getDateVisite().isEmpty()) {
-					sql += "codeVisite = \"" + uneVisite.getCodeVisite() + "\" AND typeVisite = \""
-							+ uneVisite.getTypeVisite() + "\" AND prix = \"" + uneVisite.getPrix() + "\"";
-				} else if (uneVisite.getVille().isEmpty() && Double.toString(uneVisite.getPrix()).isEmpty()) {
-					sql += "codeVisite = \"" + uneVisite.getCodeVisite() + "\" AND typeVisite = \""
-							+ uneVisite.getTypeVisite() + "\" AND dateVisite = \"" + uneVisite.getDateVisite() + "\"";
-				} else {
-					sql += "codeVisite = \"" + uneVisite.getCodeVisite() + "\" AND typeVisite = \""
-							+ uneVisite.getTypeVisite() + "\" AND ville = \"" + uneVisite.getVille() + "\"";
-				}
-				break;
-			case 2:
-				if (!uneVisite.getCodeVisite().isEmpty() && !uneVisite.getTypeVisite().isEmpty()) {
-					sql += "codeVisite = \"" + uneVisite.getCodeVisite() + "\" AND typeVisite = \""
-							+ uneVisite.getTypeVisite() + "\"";
-				} else if (!uneVisite.getCodeVisite().isEmpty() && !uneVisite.getVille().isEmpty()) {
-					sql += "codeVisite = \"" + uneVisite.getCodeVisite() + "\" AND ville = \"" + uneVisite.getVille()
-							+ "\" AND dateVisite = \"";
-				} else if (!uneVisite.getCodeVisite().isEmpty() && !uneVisite.getDateVisite().isEmpty()) {
-					sql += "codeVisite = \"" + uneVisite.getCodeVisite() + "\" AND dateVisite = \""
-							+ uneVisite.getDateVisite() + "\"";
-				} else if (!uneVisite.getCodeVisite().isEmpty() && !Double.toString(uneVisite.getPrix()).isEmpty()) {
-					sql += "codeVisite = \"" + uneVisite.getCodeVisite() + "\" AND prix = \"" + uneVisite.getPrix()
-							+ "\"";
-				} else if (!uneVisite.getTypeVisite().isEmpty() && !uneVisite.getVille().isEmpty()) {
-					sql += "typeVisite = \"" + uneVisite.getTypeVisite() + "\" AND ville = \"" + uneVisite.getVille()
-							+ "\"";
-				} else if (!uneVisite.getTypeVisite().isEmpty() && !uneVisite.getDateVisite().isEmpty()) {
-					sql += "typeVisite = \"" + uneVisite.getTypeVisite() + "\" AND dateVisite = \""
-							+ uneVisite.getDateVisite() + "\"";
-				} else if (!uneVisite.getTypeVisite().isEmpty() && !Double.toString(uneVisite.getPrix()).isEmpty()) {
-					sql += "typeVisite = \"" + uneVisite.getTypeVisite() + "\" AND prix = \"" + uneVisite.getPrix()
-							+ "\"";
-				} else if (!uneVisite.getVille().isEmpty() && !uneVisite.getDateVisite().isEmpty()) {
-					sql += "ville = \"" + uneVisite.getVille() + "\" AND dateVisite = \"" + uneVisite.getDateVisite()
-							+ "\"";
-				} else if (!uneVisite.getVille().isEmpty() && !Double.toString(uneVisite.getPrix()).isEmpty()) {
-					sql += "ville = \"" + uneVisite.getVille() + "\" AND prix = \"" + uneVisite.getPrix() + "\"";
-				} else {
-					sql += "dateVisite = \"" + uneVisite.getDateVisite() + "\" AND prix = \"" + uneVisite.getPrix()
-							+ "\"";
-				}
-				break;
-			case 1:
-				if (codeVisite != null) {
-					sql += "codeVisite = \"" + uneVisite.getCodeVisite() + "\"";
-				} else if (!uneVisite.getTypeVisite().isEmpty()) {
-					sql += "typeVisite = \"" + uneVisite.getTypeVisite() + "\"";
-				} else if (!uneVisite.getVille().isEmpty()) {
-					sql += "ville = \"" + uneVisite.getVille() + "\"";
-				} else if (!uneVisite.getDateVisite().isEmpty()) {
-					sql += "dateVisite = \"" + uneVisite.getDateVisite() + "\"";
-				} else {
-					sql += "prix = \"" + uneVisite.getPrix() + "\"";
-				}
-				break;
-			default:
-				break;
+			} else if (uneVisite.getTypeVisite().isEmpty()) {
+				sql += "codeVisite = \"" + uneVisite.getCodeVisite() + "\" AND ville = \"" + uneVisite.getVille()
+						+ "\" AND dateVisite = \"" + uneVisite.getDateVisite() + "\" AND prix = \""
+						+ uneVisite.getPrix() + "\"";
+			} else if (uneVisite.getVille().isEmpty()) {
+				sql += "codeVisite = \"" + uneVisite.getCodeVisite() + "\" AND typeVisite = \""
+						+ uneVisite.getTypeVisite() + "\" AND dateVisite = \"" + uneVisite.getDateVisite()
+						+ "\" AND prix = \"" + uneVisite.getPrix() + "\"";
+			} else if (uneVisite.getDateVisite().isEmpty()) {
+				sql += "codeVisite = \"" + uneVisite.getCodeVisite() + "\" AND typeVisite = \""
+						+ uneVisite.getTypeVisite() + "\" AND ville = \"" + uneVisite.getVille() + "\" AND prix = \""
+						+ uneVisite.getPrix() + "\"";
+			} else {
+				sql += "codeVisite = \"" + uneVisite.getCodeVisite() + "\" AND typeVisite = \""
+						+ uneVisite.getTypeVisite() + "\" AND ville = \"" + uneVisite.getVille()
+						+ "\" AND dateVisite = \"" + uneVisite.getDateVisite() + "\"";
 			}
-
+			break;
+		case 3:
+			if (uneVisite.getCodeVisite().isEmpty() && uneVisite.getTypeVisite().isEmpty()) {
+				sql += "ville = \"" + uneVisite.getVille() + "\" AND dateVisite = \"" + uneVisite.getDateVisite()
+						+ "\" AND prix = \"" + uneVisite.getPrix() + "\"";
+			} else if (uneVisite.getCodeVisite().isEmpty() && uneVisite.getVille().isEmpty()) {
+				sql += "typeVisite = \"" + uneVisite.getTypeVisite() + "\" AND dateVisite = \""
+						+ uneVisite.getDateVisite() + "\" AND prix = \"" + uneVisite.getPrix() + "\"";
+			} else if (uneVisite.getCodeVisite().isEmpty() && uneVisite.getDateVisite().isEmpty()) {
+				sql += "AND typeVisite = \"" + uneVisite.getTypeVisite() + "\" AND ville = \"" + uneVisite.getVille()
+						+ "\" AND prix = \"" + uneVisite.getPrix() + "\"";
+			} else if (uneVisite.getCodeVisite().isEmpty() && Double.toString(uneVisite.getPrix()).isEmpty()) {
+				sql += "typeVisite = \"" + uneVisite.getTypeVisite() + "\" AND ville = \"" + uneVisite.getVille()
+						+ "\" AND dateVisite = \"" + uneVisite.getDateVisite() + "\"";
+			} else if (uneVisite.getTypeVisite().isEmpty() && uneVisite.getVille().isEmpty()) {
+				sql += "codeVisite = \"" + uneVisite.getCodeVisite() + "\" AND dateVisite = \""
+						+ uneVisite.getDateVisite() + "\" AND prix = \"" + uneVisite.getPrix() + "\"";
+			} else if (uneVisite.getTypeVisite().isEmpty() && uneVisite.getDateVisite().isEmpty()) {
+				sql += "codeVisite = \"" + uneVisite.getCodeVisite() + "\" AND ville = \"" + uneVisite.getVille()
+						+ "\" AND prix = \"" + uneVisite.getPrix() + "\"";
+			} else if (uneVisite.getTypeVisite().isEmpty() && Double.toString(uneVisite.getPrix()).isEmpty()) {
+				sql += "codeVisite = \"" + uneVisite.getCodeVisite() + "\" AND ville = \"" + uneVisite.getVille()
+						+ "\" AND dateVisite = \"" + uneVisite.getDateVisite() + "\"";
+			} else if (uneVisite.getVille().isEmpty() && uneVisite.getDateVisite().isEmpty()) {
+				sql += "codeVisite = \"" + uneVisite.getCodeVisite() + "\" AND typeVisite = \""
+						+ uneVisite.getTypeVisite() + "\" AND prix = \"" + uneVisite.getPrix() + "\"";
+			} else if (uneVisite.getVille().isEmpty() && Double.toString(uneVisite.getPrix()).isEmpty()) {
+				sql += "codeVisite = \"" + uneVisite.getCodeVisite() + "\" AND typeVisite = \""
+						+ uneVisite.getTypeVisite() + "\" AND dateVisite = \"" + uneVisite.getDateVisite() + "\"";
+			} else {
+				sql += "codeVisite = \"" + uneVisite.getCodeVisite() + "\" AND typeVisite = \""
+						+ uneVisite.getTypeVisite() + "\" AND ville = \"" + uneVisite.getVille() + "\"";
+			}
+			break;
+		case 2:
+			if (!uneVisite.getCodeVisite().isEmpty() && !uneVisite.getTypeVisite().isEmpty()) {
+				sql += "codeVisite = \"" + uneVisite.getCodeVisite() + "\" AND typeVisite = \""
+						+ uneVisite.getTypeVisite() + "\"";
+			} else if (!uneVisite.getCodeVisite().isEmpty() && !uneVisite.getVille().isEmpty()) {
+				sql += "codeVisite = \"" + uneVisite.getCodeVisite() + "\" AND ville = \"" + uneVisite.getVille()
+						+ "\" AND dateVisite = \"";
+			} else if (!uneVisite.getCodeVisite().isEmpty() && !uneVisite.getDateVisite().isEmpty()) {
+				sql += "codeVisite = \"" + uneVisite.getCodeVisite() + "\" AND dateVisite = \""
+						+ uneVisite.getDateVisite() + "\"";
+			} else if (!uneVisite.getCodeVisite().isEmpty() && !Double.toString(uneVisite.getPrix()).isEmpty()) {
+				sql += "codeVisite = \"" + uneVisite.getCodeVisite() + "\" AND prix = \"" + uneVisite.getPrix() + "\"";
+			} else if (!uneVisite.getTypeVisite().isEmpty() && !uneVisite.getVille().isEmpty()) {
+				sql += "typeVisite = \"" + uneVisite.getTypeVisite() + "\" AND ville = \"" + uneVisite.getVille()
+						+ "\"";
+			} else if (!uneVisite.getTypeVisite().isEmpty() && !uneVisite.getDateVisite().isEmpty()) {
+				sql += "typeVisite = \"" + uneVisite.getTypeVisite() + "\" AND dateVisite = \""
+						+ uneVisite.getDateVisite() + "\"";
+			} else if (!uneVisite.getTypeVisite().isEmpty() && !Double.toString(uneVisite.getPrix()).isEmpty()) {
+				sql += "typeVisite = \"" + uneVisite.getTypeVisite() + "\" AND prix = \"" + uneVisite.getPrix() + "\"";
+			} else if (!uneVisite.getVille().isEmpty() && !uneVisite.getDateVisite().isEmpty()) {
+				sql += "ville = \"" + uneVisite.getVille() + "\" AND dateVisite = \"" + uneVisite.getDateVisite()
+						+ "\"";
+			} else if (!uneVisite.getVille().isEmpty() && !Double.toString(uneVisite.getPrix()).isEmpty()) {
+				sql += "ville = \"" + uneVisite.getVille() + "\" AND prix = \"" + uneVisite.getPrix() + "\"";
+			} else {
+				sql += "dateVisite = \"" + uneVisite.getDateVisite() + "\" AND prix = \"" + uneVisite.getPrix() + "\"";
+			}
+			break;
+		case 1:
+			if (codeVisite != null) {
+				sql += "codeVisite = \"" + uneVisite.getCodeVisite() + "\"";
+			} else if (!uneVisite.getTypeVisite().isEmpty()) {
+				sql += "typeVisite = \"" + uneVisite.getTypeVisite() + "\"";
+			} else if (!uneVisite.getVille().isEmpty()) {
+				sql += "ville = \"" + uneVisite.getVille() + "\"";
+			} else if (!uneVisite.getDateVisite().isEmpty()) {
+				sql += "dateVisite = \"" + uneVisite.getDateVisite() + "\"";
+			} else {
+				sql += "prix = \"" + uneVisite.getPrix() + "\"";
+			}
+			break;
+		default:
+			break;
+		}
+		try {
 			DriverManager.registerDriver(new Driver());
 			Connection con = DriverManager.getConnection("jdbc:mysql://" + DB_ADRESSE + "/GestionnaireVisites", "admin",
 					"admin");
@@ -181,13 +177,14 @@ public class GestionVisites {
 			return Collections.emptyList();
 		}
 	}
-	
+
 	/**
 	 * Permet la réservation d'une visite et l'insertion dans la db
+	 * 
 	 * @param uneReservation
 	 * @return
 	 */
-	
+
 	public String reserverVisite(ReservationVisite uneReservation) {
 		try {
 			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
@@ -249,11 +246,13 @@ public class GestionVisites {
 	}
 
 	/**
-	 * Permet de payer la réservation avec le code de reservation passer en paramètre
+	 * Permet de payer la réservation avec le code de reservation passer en
+	 * paramètre
+	 * 
 	 * @param codeReservation
 	 * @return
 	 */
-	
+
 	public String payerVisite(String codeReservation) {
 		try {
 			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
@@ -280,9 +279,10 @@ public class GestionVisites {
 
 		return "Problème lors du paiement !";
 	}
-	
+
 	/**
 	 * Permet d'annuler une réservation à partir de son code de réservation
+	 * 
 	 * @param codeReservation
 	 * @return
 	 */
