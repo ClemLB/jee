@@ -189,20 +189,20 @@ public class GestionVisites implements SEIGestionVisites {
 			String table = "Reservations";
 
 			// Attributs de la réservation
-			String codeReservation = null;
-			int codeVisite;
+			String codeVisite;
 			int nbPersonnes;
 
 			String columns = "(";
 			String values = "('";
+			
+			String codeReservation = "";
+			
+			// TODO générer aléatoirement le code de résa
+			// TODO vérifier qu'il n'existe pas
+			// TODO récupérer l'id de la viste à partir du code de la viste
+			
 
-			if (uneReservation.getCodeReservation() != null) {
-				codeReservation = uneReservation.getCodeReservation();
-				columns += "codeReservation, ";
-				values += codeReservation + "', '";
-			}
-
-			if ((Integer) uneReservation.getCodeVisite() != null) {
+			if (uneReservation.getCodeVisite() != null) {
 				codeVisite = uneReservation.getCodeVisite();
 				columns += "idVisite, ";
 				values += codeVisite + "', '";
@@ -219,12 +219,16 @@ public class GestionVisites implements SEIGestionVisites {
 				values += nbPersonnes + "', '";
 			}
 
+			
 			columns += "booleenPaiementEffectue)";
 			values += "0')";
-			String query = "INSERT INTO " + table + columns + "VALUES " + values;
-			stmt.executeUpdate(query);
-
+			
 			stmt.close();
+			Statement stmtInsert = conn.createStatement();
+			String query = "INSERT INTO " + table + columns + "VALUES " + values;
+			stmtInsert.executeUpdate(query);
+
+			stmtInsert.close();
 			conn.close();
 
 			return uneReservation.getCodeReservation();
