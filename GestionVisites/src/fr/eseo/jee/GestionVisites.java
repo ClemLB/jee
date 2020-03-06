@@ -11,7 +11,7 @@ import java.util.List;
 
 public class GestionVisites {
 
-	static final String DB_ADRESSE = "192.168.4.197";
+	private static final String DB_ADRESSE = "192.168.4.197";
 	private static final String USERNAME = "java";
 	private static final String PASSWORD = "network";
 
@@ -49,21 +49,21 @@ public class GestionVisites {
 		switch (nonNull) {
 		case 5:
 			sql += "codeVisite = \"" + codeVisite + "\" AND typeVisite = \"" + typeVisite + "\" AND ville = \"" + ville
-					+ "\" AND dateVisite = \"" + dateVisite + "\" AND prix = \"" + prix + "\"";
+					+ "\" AND dateVisite = \"" + dateVisite + "\" AND prixVisite = \"" + prix + "\"";
 			break;
 		case 4:
 			if (codeVisite != null) {
 				sql += "typeVisite = \"" + typeVisite + "\" AND ville = \"" + ville + "\" AND dateVisite = \""
-						+ dateVisite + "\" AND prix = \"" + prix + "\"";
+						+ dateVisite + "\" AND prixVisite = \"" + prix + "\"";
 			} else if (typeVisite != null) {
 				sql += "codeVisite = \"" + codeVisite + "\" AND ville = \"" + ville + "\" AND dateVisite = \""
-						+ dateVisite + "\" AND prix = \"" + prix + "\"";
+						+ dateVisite + "\" AND prixVisite = \"" + prix + "\"";
 			} else if (ville != null) {
 				sql += "codeVisite = \"" + codeVisite + "\" AND typeVisite = \"" + typeVisite + "\" AND dateVisite = \""
-						+ dateVisite + "\" AND prix = \"" + prix + "\"";
+						+ dateVisite + "\" AND prixVisite = \"" + prix + "\"";
 			} else if (dateVisite != null) {
 				sql += "codeVisite = \"" + codeVisite + "\" AND typeVisite = \"" + typeVisite + "\" AND ville = \""
-						+ ville + "\" AND prix = \"" + prix + "\"";
+						+ ville + "\" AND prixVisite = \"" + prix + "\"";
 			} else {
 				sql += "codeVisite = \"" + codeVisite + "\" AND typeVisite = \"" + typeVisite + "\" AND ville = \""
 						+ ville + "\" AND dateVisite = \"" + dateVisite + "\"";
@@ -71,26 +71,26 @@ public class GestionVisites {
 			break;
 		case 3:
 			if (codeVisite != null && typeVisite != null) {
-				sql += "ville = \"" + ville + "\" AND dateVisite = \"" + dateVisite + "\" AND prix = \"" + prix + "\"";
+				sql += "ville = \"" + ville + "\" AND dateVisite = \"" + dateVisite + "\" AND prixVisite = \"" + prix + "\"";
 			} else if (codeVisite != null && ville != null) {
-				sql += "typeVisite = \"" + typeVisite + "\" AND dateVisite = \"" + dateVisite + "\" AND prix = \""
+				sql += "typeVisite = \"" + typeVisite + "\" AND dateVisite = \"" + dateVisite + "\" AND prixVisite = \""
 						+ prix + "\"";
 			} else if (codeVisite != null && dateVisite != null) {
-				sql += "AND typeVisite = \"" + typeVisite + "\" AND ville = \"" + ville + "\" AND prix = \"" + prix
+				sql += "AND typeVisite = \"" + typeVisite + "\" AND ville = \"" + ville + "\" AND prixVisite = \"" + prix
 						+ "\"";
 			} else if (codeVisite != null && prix != null) {
 				sql += "typeVisite = \"" + typeVisite + "\" AND ville = \"" + ville + "\" AND dateVisite = \""
 						+ dateVisite + "\"";
 			} else if (typeVisite != null && ville != null) {
-				sql += "codeVisite = \"" + codeVisite + "\" AND dateVisite = \"" + dateVisite + "\" AND prix = \""
+				sql += "codeVisite = \"" + codeVisite + "\" AND dateVisite = \"" + dateVisite + "\" AND prixVisite = \""
 						+ prix + "\"";
 			} else if (typeVisite != null && dateVisite != null) {
-				sql += "codeVisite = \"" + codeVisite + "\" AND ville = \"" + ville + "\" AND prix = \"" + prix + "\"";
+				sql += "codeVisite = \"" + codeVisite + "\" AND ville = \"" + ville + "\" AND prixVisite = \"" + prix + "\"";
 			} else if (typeVisite != null && prix != null) {
 				sql += "codeVisite = \"" + codeVisite + "\" AND ville = \"" + ville + "\" AND dateVisite = \""
 						+ dateVisite + "\"";
 			} else if (ville != null && dateVisite != null) {
-				sql += "codeVisite = \"" + codeVisite + "\" AND typeVisite = \"" + typeVisite + "\" AND prix = \""
+				sql += "codeVisite = \"" + codeVisite + "\" AND typeVisite = \"" + typeVisite + "\" AND prixVisite = \""
 						+ prix + "\"";
 			} else if (ville != null && prix != null) {
 				sql += "codeVisite = \"" + codeVisite + "\" AND typeVisite = \"" + typeVisite + "\" AND dateVisite = \""
@@ -108,19 +108,19 @@ public class GestionVisites {
 			} else if (codeVisite != null && dateVisite != null) {
 				sql += "codeVisite = \"" + codeVisite + "\" AND dateVisite = \"" + dateVisite + "\"";
 			} else if (codeVisite != null && prix != null) {
-				sql += "codeVisite = \"" + codeVisite + "\" AND prix = \"" + prix + "\"";
+				sql += "codeVisite = \"" + codeVisite + "\" AND prixVisite = \"" + prix + "\"";
 			} else if (typeVisite != null && ville != null) {
 				sql += "typeVisite = \"" + typeVisite + "\" AND ville = \"" + ville + "\"";
 			} else if (typeVisite != null && dateVisite != null) {
 				sql += "typeVisite = \"" + typeVisite + "\" AND dateVisite = \"" + dateVisite + "\"";
 			} else if (typeVisite != null && prix != null) {
-				sql += "typeVisite = \"" + typeVisite + "\" AND prix = \"" + prix + "\"";
+				sql += "typeVisite = \"" + typeVisite + "\" AND prixVisite = \"" + prix + "\"";
 			} else if (ville != null && dateVisite != null) {
 				sql += "ville = \"" + ville + "\" AND dateVisite = \"" + dateVisite + "\"";
 			} else if (ville != null && prix != null) {
-				sql += "ville = \"" + ville + "\" AND prix = \"" + prix + "\"";
+				sql += "ville = \"" + ville + "\" AND prixVisite = \"" + prix + "\"";
 			} else {
-				sql += "dateVisite = \"" + dateVisite + "\" AND prix = \"" + prix + "\"";
+				sql += "dateVisite = \"" + dateVisite + "\" AND prixVisite = \"" + prix + "\"";
 			}
 			break;
 		case 1:
@@ -133,7 +133,7 @@ public class GestionVisites {
 			} else if (dateVisite != null) {
 				sql += "dateVisite = \"" + dateVisite + "\"";
 			} else {
-				sql += "prix = \"" + prix + "\"";
+				sql += "prixVisite = \"" + prix + "\"";
 			}
 			break;
 		default:
@@ -141,7 +141,7 @@ public class GestionVisites {
 		}
 		try {
 			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
-			Connection con = DriverManager.getConnection("jdbc:mysql://" + DB_ADRESSE + "/Biblio", USERNAME, PASSWORD);
+			Connection con = DriverManager.getConnection("jdbc:mysql://" + DB_ADRESSE + "/GestionnaireVisites", USERNAME, PASSWORD);
 
 			Statement stmt = con.createStatement();
 			stmt.executeQuery(sql);
