@@ -9,7 +9,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class GestionVisites {
+import javax.jws.WebService;
+
+@WebService(targetNamespace = "http://jee.eseo.fr/", endpointInterface = "fr.eseo.jee.SEIGestionVisites", portName = "GestionVisitesPort", serviceName = "GestionVisitesService")
+public class GestionVisites implements SEIGestionVisites {
 
 	private static final String DB_ADRESSE = "192.168.4.197";
 	private static final String USERNAME = "java";
