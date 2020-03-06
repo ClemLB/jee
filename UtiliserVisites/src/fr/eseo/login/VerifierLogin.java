@@ -1,4 +1,4 @@
-package fr.eseo.jee;
+package fr.eseo.login;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -22,7 +22,6 @@ import javax.servlet.http.HttpSession;
 public class VerifierLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	static final String DB_ADRESSE = "192.168.4.197";
-	//static final String DB_ADRESSE = "localhost";
 	static final String DB_LOGIN = "java";
 	static final String DB_MDP = "network";
 
