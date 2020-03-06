@@ -41,6 +41,7 @@ public class ReserverVisite extends HttpServlet {
 		int nombrePersonnes = Integer.valueOf(request.getParameter("nbrClient"));
 		Client client = (Client) session.getAttribute("client");
 		
+		
 		GestionVisitesService service = new GestionVisitesService();
 		SEIGestionVisites port = service.getGestionVisitesPort();
 		
