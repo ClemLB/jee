@@ -218,9 +218,8 @@ public class GestionVisites {
 			columns += "booleenPaiementEffectue)";
 			values += "0')";
 			String query = "INSERT INTO " + table + columns + "VALUES " + values;
-			ResultSet res = stmt.executeQuery(query);
+			stmt.executeUpdate(query);
 
-			res.close();
 			stmt.close();
 			conn.close();
 
@@ -254,9 +253,8 @@ public class GestionVisites {
 
 			String query = "UPDATE " + table + " SET booleenPaiementEffectue = '1' WHERE codeReservation = "
 					+ codeReservation;
-			ResultSet res = stmt.executeQuery(query);
-
-			res.close();
+			stmt.executeUpdate(query);
+			
 			stmt.close();
 			conn.close();
 
@@ -287,9 +285,8 @@ public class GestionVisites {
 			// Attributs de la réservation
 
 			String query = "DELETE FROM " + table + " WHERE codeReservation = " + codeReservation;
-			ResultSet res = stmt.executeQuery(query);
-
-			res.close();
+			stmt.executeUpdate(query);
+			
 			stmt.close();
 			conn.close();
 
