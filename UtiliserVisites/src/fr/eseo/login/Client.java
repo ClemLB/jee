@@ -1,4 +1,4 @@
-package fr.eseo.jee;
+package fr.eseo.login;
 
 public class Client {
 	
