@@ -6,13 +6,58 @@
 </head>
 <body>
 	<h1> Trouver votre visite : </h1> <br><br>
-	<form method="post" action="TrouverViste">
-		<input type="radio" name="ville" value="Angers"/> Angers <br>
-		<input type="radio" name="ville" value="Nantes"/> Nantes <br>
 	
-		<label for="codeRes"> Recherche : </label>
-		<input type="text" id="recherche"/> <br><br>
+	<label for="nomVille"> Ville : </label>
+	<form method="post" action="TrouverVisites">
+		<SELECT name="nomVille" id="nomVille" size="1">
+		<OPTION value="">Choisir
+		<OPTION value="angers">Angers
+		<OPTION value="nantes">Nantes
+		</SELECT>
 	</form>
+	
+	<br>
+	
+	<label for="typeVisite"> Type de visite : </label>
+	<form method="post" action="TrouverVisites">
+		<SELECT name="typeVisite" id="typeVisite" size="1">
+		<OPTION value="">Choisir
+		<OPTION value="musee">Musée d'art
+		<OPTION value="croisiere">Croisière
+		<OPTION value="monument">Monument cathédrale
+		<OPTION value="parc">Parc
+		</SELECT>
+	</form>
+	
+	<br>
+	
+	<label for="prixVisite"> Prix de la visite(en €) : </label>
+	<form method="post" action="TrouverVisites">
+		<SELECT name="prixVisite" id="prixVisite" size="1">
+		<OPTION value="">Choisir
+		<OPTION value="1.99">1.99
+		<OPTION value="2.99">2.99
+		<OPTION value="19.99">19.99
+		<OPTION value="49.99">49.99
+		</SELECT>
+	</form>
+	
+	<br>
+	
+	<label for="dateVisite"> Date de la visite : </label>
+	<form method="post" action="TrouverVisites">
+	<input type="date" id="dateVisite" name="dateVisite"/>
+	</form>
+	
+	<br>
+	
+	<label for="codeVisite"> Code de la visite : </label>
+	<form method="post" action="TrouverVisites">
+	<input type="text" placeholder="" id="codeVisite" name="codeVisite"/>
+	</form>
+	
+	<br>
+	
 	<form action="menu.html">
 		<button type="submit"> Retour </button>
 	</form>
