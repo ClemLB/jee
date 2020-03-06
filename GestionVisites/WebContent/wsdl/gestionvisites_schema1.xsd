@@ -36,7 +36,7 @@
 
   <xs:complexType name="reservationVisite">
     <xs:sequence>
-      <xs:element minOccurs="0" name="codeClient" type="xs:string"/>
+      <xs:element name="codeClient" type="xs:int"/>
       <xs:element minOccurs="0" name="codeReservation" type="xs:string"/>
       <xs:element name="codeVisite" type="xs:int"/>
       <xs:element name="nbPersonnes" type="xs:int"/>

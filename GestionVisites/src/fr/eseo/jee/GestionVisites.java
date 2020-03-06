@@ -27,8 +27,8 @@ public class GestionVisites implements SEIGestionVisites {
 	 */
 	public List<Visite> trouverVisite(Visite uneVisite) {
 
-		List<Visite> visites = new ArrayList<>();
-		List<String> param = new ArrayList<>();
+		List<Visite> visites = new ArrayList<Visite>();
+		List<String> param = new ArrayList<String>();
 		String codeVisite = uneVisite.getCodeVisite();
 		String typeVisite = uneVisite.getTypeVisite();
 		String ville = uneVisite.getVille();
@@ -74,13 +74,14 @@ public class GestionVisites implements SEIGestionVisites {
 			break;
 		case 3:
 			if (codeVisite != null && typeVisite != null) {
-				sql += "ville = \"" + ville + "\" AND dateVisite = \"" + dateVisite + "\" AND prixVisite = \"" + prix + "\"";
+				sql += "ville = \"" + ville + "\" AND dateVisite = \"" + dateVisite + "\" AND prixVisite = \"" + prix
+						+ "\"";
 			} else if (codeVisite != null && ville != null) {
 				sql += "typeVisite = \"" + typeVisite + "\" AND dateVisite = \"" + dateVisite + "\" AND prixVisite = \""
 						+ prix + "\"";
 			} else if (codeVisite != null && dateVisite != null) {
-				sql += "AND typeVisite = \"" + typeVisite + "\" AND ville = \"" + ville + "\" AND prixVisite = \"" + prix
-						+ "\"";
+				sql += "AND typeVisite = \"" + typeVisite + "\" AND ville = \"" + ville + "\" AND prixVisite = \""
+						+ prix + "\"";
 			} else if (codeVisite != null && prix != null) {
 				sql += "typeVisite = \"" + typeVisite + "\" AND ville = \"" + ville + "\" AND dateVisite = \""
 						+ dateVisite + "\"";
@@ -88,7 +89,8 @@ public class GestionVisites implements SEIGestionVisites {
 				sql += "codeVisite = \"" + codeVisite + "\" AND dateVisite = \"" + dateVisite + "\" AND prixVisite = \""
 						+ prix + "\"";
 			} else if (typeVisite != null && dateVisite != null) {
-				sql += "codeVisite = \"" + codeVisite + "\" AND ville = \"" + ville + "\" AND prixVisite = \"" + prix + "\"";
+				sql += "codeVisite = \"" + codeVisite + "\" AND ville = \"" + ville + "\" AND prixVisite = \"" + prix
+						+ "\"";
 			} else if (typeVisite != null && prix != null) {
 				sql += "codeVisite = \"" + codeVisite + "\" AND ville = \"" + ville + "\" AND dateVisite = \""
 						+ dateVisite + "\"";
@@ -144,7 +146,8 @@ public class GestionVisites implements SEIGestionVisites {
 		}
 		try {
 			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
-			Connection con = DriverManager.getConnection("jdbc:mysql://" + DB_ADRESSE + "/GestionnaireVisites", USERNAME, PASSWORD);
+			Connection con = DriverManager.getConnection("jdbc:mysql://" + DB_ADRESSE + "/GestionnaireVisites",
+					USERNAME, PASSWORD);
 
 			Statement stmt = con.createStatement();
 			stmt.executeQuery(sql);
@@ -186,30 +189,28 @@ public class GestionVisites implements SEIGestionVisites {
 			String table = "Reservations";
 
 			// Attributs de la réservation
-			String codeReservation = null;
-			int codeVisite;
-			String codeClient = null;
+			String codeVisite;
 			int nbPersonnes;
 
 			String columns = "(";
 			String values = "('";
+			
+			String codeReservation = "";
+			
+			// TODO générer aléatoirement le code de résa
+			// TODO vérifier qu'il n'existe pas
+			// TODO récupérer l'id de la viste à partir du code de la viste
+			
 
-			if (uneReservation.getCodeReservation() != null) {
-				codeReservation = uneReservation.getCodeReservation();
-				columns += "codeReservation, ";
-				values += codeReservation + "', '";
-			}
-
-			if ((Integer) uneReservation.getCodeVisite() != null) {
+			if (uneReservation.getCodeVisite() != null) {
 				codeVisite = uneReservation.getCodeVisite();
 				columns += "idVisite, ";
 				values += codeVisite + "', '";
 			}
 
-			if (uneReservation.getCodeClient() != null) {
-				codeClient = uneReservation.getCodeClient();
+			if ((Integer) uneReservation.getCodeClient() != null) {
 				columns += "idClient, ";
-				values += codeClient + "', '";
+				values += uneReservation.getCodeClient() + "', '";
 			}
 
 			if ((Integer) uneReservation.getNbPersonnes() != null) {
@@ -218,12 +219,16 @@ public class GestionVisites implements SEIGestionVisites {
 				values += nbPersonnes + "', '";
 			}
 
+			
 			columns += "booleenPaiementEffectue)";
 			values += "0')";
-			String query = "INSERT INTO " + table + columns + "VALUES " + values;
-			stmt.executeUpdate(query);
-
+			
 			stmt.close();
+			Statement stmtInsert = conn.createStatement();
+			String query = "INSERT INTO " + table + columns + "VALUES " + values;
+			stmtInsert.executeUpdate(query);
+
+			stmtInsert.close();
 			conn.close();
 
 			return uneReservation.getCodeReservation();
@@ -257,7 +262,7 @@ public class GestionVisites implements SEIGestionVisites {
 			String query = "UPDATE " + table + " SET booleenPaiementEffectue = '1' WHERE codeReservation = "
 					+ codeReservation;
 			stmt.executeUpdate(query);
-			
+
 			stmt.close();
 			conn.close();
 
@@ -289,7 +294,7 @@ public class GestionVisites implements SEIGestionVisites {
 
 			String query = "DELETE FROM " + table + " WHERE codeReservation = " + codeReservation;
 			stmt.executeUpdate(query);
-			
+
 			stmt.close();
 			conn.close();
 

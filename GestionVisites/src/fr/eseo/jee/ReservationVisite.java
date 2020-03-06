@@ -4,8 +4,8 @@ public class ReservationVisite {
 
 	// Attributs
 	private String codeReservation;
-	private int codeVisite;
-	private String codeClient;
+	private String codeVisite;
+	private int codeClient;
 	private int nbPersonnes;
 	private boolean paiementEffectue;
 
@@ -18,19 +18,19 @@ public class ReservationVisite {
 		this.codeReservation = codeReservation;
 	}
 
-	public int getCodeVisite() {
+	public String getCodeVisite() {
 		return codeVisite;
 	}
 
-	public void setCodeVisite(int codeVisite) {
+	public void setCodeVisite(String codeVisite) {
 		this.codeVisite = codeVisite;
 	}
 
-	public String getCodeClient() {
+	public int getCodeClient() {
 		return codeClient;
 	}
 
-	public void setCodeClient(String codeClient) {
+	public void setCodeClient(int codeClient) {
 		this.codeClient = codeClient;
 	}
 
