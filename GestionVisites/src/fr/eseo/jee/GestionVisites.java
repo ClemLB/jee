@@ -188,7 +188,6 @@ public class GestionVisites implements SEIGestionVisites {
 			// Attributs de la réservation
 			String codeReservation = null;
 			int codeVisite;
-			String codeClient = null;
 			int nbPersonnes;
 
 			String columns = "(";
@@ -206,10 +205,9 @@ public class GestionVisites implements SEIGestionVisites {
 				values += codeVisite + "', '";
 			}
 
-			if (uneReservation.getCodeClient() != null) {
-				codeClient = uneReservation.getCodeClient();
+			if ((Integer) uneReservation.getCodeClient() != null) {
 				columns += "idClient, ";
-				values += codeClient + "', '";
+				values += uneReservation.getCodeClient() + "', '";
 			}
 
 			if ((Integer) uneReservation.getNbPersonnes() != null) {
