@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="codeClient" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="codeClient" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
  *         &lt;element name="codeReservation" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="codeVisite" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
  *         &lt;element name="nbPersonnes" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
@@ -39,7 +39,7 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class ReservationVisite {
 
-    protected String codeClient;
+    protected int codeClient;
     protected String codeReservation;
     protected int codeVisite;
     protected int nbPersonnes;
@@ -48,24 +48,16 @@ public class ReservationVisite {
     /**
      * Obtient la valeur de la propriété codeClient.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
      */
-    public String getCodeClient() {
+    public int getCodeClient() {
         return codeClient;
     }
 
     /**
      * Définit la valeur de la propriété codeClient.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
      */
-    public void setCodeClient(String value) {
+    public void setCodeClient(int value) {
         this.codeClient = value;
     }
 
