@@ -23,6 +23,8 @@ public class VerifierLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	// static final String DB_ADRESSE = "192.168.4.197";
 	static final String DB_ADRESSE = "localhost";
+	static final String DB_LOGIN = "root";
+	static final String DB_MDP = "network";
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -46,35 +48,38 @@ public class VerifierLogin extends HttpServlet {
 		try {
 			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
 
-			Connection connection = DriverManager
-					.getConnection("jdbc:mysql://" + DB_ADRESSE + "/GestionnaireVisites?user=root&password=network");
+			Connection connection = DriverManager.getConnection(
+					"jdbc:mysql://" + DB_ADRESSE + "/GestionnaireVisites?user=" + DB_LOGIN + "&password=" + DB_MDP);
 
 			Statement stmt = connection.createStatement();
 
 			String sql = "Select * from GestionnaireVisites.Clients WHERE `email`=\"" + email + "\" and motDePasse=\""
 					+ password + "\" ";
-			System.out.println(sql);
 
 			ResultSet rset = stmt.executeQuery(sql);
 
 			Client client = new Client();
+
 			while (rset.next()) {
-				System.out.println(rset.getString("idClient"));
+
 				client.setIdClient(Integer.valueOf(rset.getString("idClient")));
 				client.setEmail(rset.getString("email"));
 				client.setNom(rset.getString("nom"));
 				client.setPrenom(rset.getString("prenom"));
 			}
-			
-			System.out.println(client.getIdClient());
 
 			session.setAttribute("client", client);
 			rset.close();
 			stmt.close();
 			connection.close();
 
-			RequestDispatcher dispt = request.getRequestDispatcher("index.html");
-			dispt.forward(request, response);
+			if (client.getIdClient() == 0) {
+				RequestDispatcher dispt = request.getRequestDispatcher("login.html");
+				dispt.forward(request, response);
+			} else {
+				RequestDispatcher dispt = request.getRequestDispatcher("menu.html");
+				dispt.forward(request, response);
+			}
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
