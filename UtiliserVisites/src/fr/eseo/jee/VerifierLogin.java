@@ -21,56 +21,65 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/VerifierLogin")
 public class VerifierLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	//static final String DB_ADRESSE = "192.168.4.197";
+	// static final String DB_ADRESSE = "192.168.4.197";
 	static final String DB_ADRESSE = "localhost";
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public VerifierLogin() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public VerifierLogin() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		
-		
+
 		try {
 			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
 
 			Connection connection = DriverManager
-					.getConnection("jdbc:mysql://"+DB_ADRESSE+"/GestionnaireVisites?user=java&password=network");
+					.getConnection("jdbc:mysql://" + DB_ADRESSE + "/GestionnaireVisites?user=root&password=network");
 
 			Statement stmt = connection.createStatement();
 
-			
-			ResultSet rset = stmt.executeQuery("Select * from Clients WHERE `email`=\""+email+"\" and motDePasse=\""+password+"\" ");
-			
+			String sql = "Select * from GestionnaireVisites.Clients WHERE `email`=\"" + email + "\" and motDePasse=\""
+					+ password + "\" ";
+			System.out.println(sql);
+
+			ResultSet rset = stmt.executeQuery(sql);
+
 			Client client = new Client();
-			client.setIdClient(rset.getInt(1));
-			System.out.println(client.getIdClient());
+			while (rset.next()) {
+				System.out.println(rset.getString("idClient"));
+				client.setIdClient(Integer.valueOf(rset.getString("idClient")));
+				client.setEmail(rset.getString("email"));
+				client.setNom(rset.getString("nom"));
+				client.setPrenom(rset.getString("prenom"));
+			}
 			
+			System.out.println(client.getIdClient());
+
 			session.setAttribute("client", client);
 			rset.close();
 			stmt.close();
 			connection.close();
-		
-			
-			RequestDispatcher dispt = request.getRequestDispatcher("VisualiserTitre.jsp");
+
+			RequestDispatcher dispt = request.getRequestDispatcher("index.html");
 			dispt.forward(request, response);
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 
 	}
 
