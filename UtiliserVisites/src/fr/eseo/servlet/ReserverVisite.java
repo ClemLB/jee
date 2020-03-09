@@ -1,6 +1,7 @@
 package fr.eseo.servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,7 +15,6 @@ import fr.eseo.jee.GestionVisitesService;
 import fr.eseo.jee.ReservationVisite;
 import fr.eseo.jee.SEIGestionVisites;
 import fr.eseo.jee.Visite;
-import fr.eseo.login.Client;
 
 /**
  * Servlet implementation class ReserverVisite
@@ -45,15 +45,26 @@ public class ReserverVisite extends HttpServlet {
 		SEIGestionVisites port = service.getGestionVisitesPort();
 		
 		Visite visiteChoisie = new Visite();
+		String reservation;
+		
 		visiteChoisie.setCodeVisite(codeVisite);
-		visiteChoisie = port.trouverVisite(visiteChoisie).get(0);
 		
-		ReservationVisite reservationVoulue = new ReservationVisite();
-		reservationVoulue.setCodeVisite(visiteChoisie.getCodeVisite());
-		reservationVoulue.setNbPersonnes(nombrePersonnes);
-		reservationVoulue.setCodeClient(clientID);
+		List<Visite> visites = port.trouverVisite(visiteChoisie);
 		
-		String reservation = port.reserverVisite(reservationVoulue);
+		if( visites.size() != 0) {
+			visiteChoisie = visites.get(0);
+			
+			ReservationVisite reservationVoulue = new ReservationVisite();
+			reservationVoulue.setCodeVisite(visiteChoisie.getCodeVisite());
+			reservationVoulue.setNbPersonnes(nombrePersonnes);
+			reservationVoulue.setCodeClient(clientID);
+			
+			reservation = port.reserverVisite(reservationVoulue);
+		}else {
+			reservation = "Désolé ! La visite n'existe pas dans notre base de donnée. " +
+					"Veuillez vérifier d'avoir entré le bon code de visite.";
+		}
+		
 		
 		session.setAttribute("reservation", reservation);
 		
