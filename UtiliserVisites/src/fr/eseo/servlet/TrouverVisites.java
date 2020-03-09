@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang3.StringUtils;
+
 import fr.eseo.jee.GestionVisitesService;
 import fr.eseo.jee.SEIGestionVisites;
 import fr.eseo.jee.Visite;
@@ -43,50 +45,31 @@ public class TrouverVisites extends HttpServlet {
 		Double prix;
 		String date;
 		String code;
+		Visite visite = new Visite();
 		
-		if (request.getParameter("nomVille").equals("")) {
-			ville = null;
-		}else {
+		if (!request.getParameter("nomVille").equals("")) {
 			ville = request.getParameter("nomVille");
+			visite.setVille(ville);
 		}
-		if (request.getParameter("typeVisite").equals("")) {
-			type = null;
-		}else {
-			type = request.getParameter("typeVisite");
+		if (!request.getParameter("typeVisite").equals("")) {
+			type = StringUtils.stripAccents(request.getParameter("typeVisite"));
+			visite.setTypeVisite(type);
 		}
-		if (request.getParameter("prixVisite").equals("")) {
-			prix = null;
-		}else {
+		if (!request.getParameter("prixVisite").equals("")) {
 			prix = Double.valueOf(request.getParameter("prixVisite"));
+			visite.setPrix(prix);
 		}
-		if (request.getParameter("dateVisite").equals("")) {
-			date = null;
-		}else {
+		if (!request.getParameter("dateVisite").equals("")) {
 			date = request.getParameter("dateVisite");
+			visite.setDateVisite(date);
 		}
-		if (request.getParameter("codeVisite").equals("")) {
-			code = null;
-		}else {
+		if (!request.getParameter("codeVisite").equals("")) {
 			code = request.getParameter("codeVisite");
+			visite.setCodeVisite(code);
 		}
-		
-		
-		//String ville = request.getParameter("nomVille");
-		//String type = request.getParameter("typeVisite");
-		//Double prix = Double.valueOf(request.getParameter("prixVisite"));
-		//String date = request.getParameter("dateVisite");
-		//String code = request.getParameter("codeVisite");
-		
 		
 		GestionVisitesService service = new GestionVisitesService();
 		SEIGestionVisites port = service.getGestionVisitesPort();
-		
-		Visite visite = new Visite();
-		visite.setVille(ville);
-		visite.setTypeVisite(type);
-		visite.setPrix(prix);
-		visite.setDateVisite(date);
-		visite.setCodeVisite(code);
 		
 		List<Visite> listeVisite = port.trouverVisite(visite);
 		
