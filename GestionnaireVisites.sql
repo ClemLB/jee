@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Mer 04 Mars 2020 à 10:57
+-- Généré le :  Lun 09 Mars 2020 à 10:12
 -- Version du serveur :  5.7.25-0ubuntu0.16.04.2
 -- Version de PHP :  7.0.32-0ubuntu0.16.04.1
 
@@ -32,7 +32,7 @@ CREATE TABLE `Clients` (
   `prenom` varchar(20) CHARACTER SET utf8 NOT NULL,
   `email` varchar(60) CHARACTER SET utf8 NOT NULL,
   `motDePasse` varchar(20) CHARACTER SET utf8 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `Clients`
@@ -57,6 +57,16 @@ CREATE TABLE `Reservations` (
   `idReservation` int(20) NOT NULL,
   `codeReservation` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `Reservations`
+--
+
+INSERT INTO `Reservations` (`idVisite`, `idClient`, `nombreplaces`, `booleenPaiementEffectue`, `idReservation`, `codeReservation`) VALUES
+(1, 1, 3, 1, 1, '12345'),
+(2, 1, 42, 1, 3, '3511136142048'),
+(2, 1, 1, 1, 4, '8nkoTEL'),
+(3, 1, 69, 1, 5, 'BHNFuxW');
 
 -- --------------------------------------------------------
 
@@ -123,7 +133,7 @@ ALTER TABLE `Clients`
 -- AUTO_INCREMENT pour la table `Reservations`
 --
 ALTER TABLE `Reservations`
-  MODIFY `idReservation` int(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `idReservation` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT pour la table `Visites`
 --
