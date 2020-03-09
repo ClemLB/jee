@@ -52,7 +52,7 @@ public class VerifierLogin extends HttpServlet {
 
 			Statement stmt = connection.createStatement();
 
-			String sql = "Select * from GestionnaireVisites.Clients WHERE `email`=\"" + email + "\" and motDePasse=\""
+			String sql = "Select * from ClientsVisites.Clients WHERE `email`=\"" + email + "\" and motDePasse=\""
 					+ password + "\" ";
 
 			ResultSet rset = stmt.executeQuery(sql);

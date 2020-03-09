@@ -53,6 +53,10 @@ public class ReserverVisite extends HttpServlet {
 		reservationVoulue.setNbPersonnes(nombrePersonnes);
 		reservationVoulue.setCodeClient(client.getIdClient());
 		
+		String reservation = port.reserverVisite(reservationVoulue);
+		
+		session.setAttribute("reservation", reservation);
+		
 		RequestDispatcher dispt = request.getRequestDispatcher("ConfirmationReservation.jsp");
 		dispt.forward(request, response);
 		
