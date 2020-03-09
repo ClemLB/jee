@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Lun 09 Mars 2020 à 10:12
+-- Généré le :  Lun 09 Mars 2020 à 10:48
 -- Version du serveur :  5.7.25-0ubuntu0.16.04.2
 -- Version de PHP :  7.0.32-0ubuntu0.16.04.1
 
@@ -63,10 +63,7 @@ CREATE TABLE `Reservations` (
 --
 
 INSERT INTO `Reservations` (`idVisite`, `idClient`, `nombreplaces`, `booleenPaiementEffectue`, `idReservation`, `codeReservation`) VALUES
-(1, 1, 3, 1, 1, '12345'),
-(2, 1, 42, 1, 3, '3511136142048'),
-(2, 1, 1, 1, 4, '8nkoTEL'),
-(3, 1, 69, 1, 5, 'BHNFuxW');
+(4, 1, 1, 0, 10, 'SWwNJUa');
 
 -- --------------------------------------------------------
 
@@ -88,9 +85,9 @@ CREATE TABLE `Visites` (
 --
 
 INSERT INTO `Visites` (`typeVisite`, `ville`, `dateVisite`, `prixVisite`, `idVisite`, `codeVisite`) VALUES
-('musée art', 'nantes', '2020-03-13', 49.99, 1, 'munantes130320'),
-('croisière', 'angers', '2020-04-02', 19.99, 2, 'crangers020420'),
-('monument cathédrale', 'angers', '2020-04-04', 1.99, 3, 'moangers040420'),
+('musee art', 'nantes', '2020-03-13', 49.99, 1, 'munantes130320'),
+('croisiere', 'angers', '2020-04-02', 19.99, 2, 'crangers020420'),
+('monument cathedrale', 'angers', '2020-04-04', 1.99, 3, 'moangers040420'),
 ('parc', 'angers', '2020-04-04', 2.99, 4, 'paangers040420');
 
 --
@@ -133,12 +130,12 @@ ALTER TABLE `Clients`
 -- AUTO_INCREMENT pour la table `Reservations`
 --
 ALTER TABLE `Reservations`
-  MODIFY `idReservation` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idReservation` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT pour la table `Visites`
 --
 ALTER TABLE `Visites`
-  MODIFY `idVisite` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idVisite` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=778;
 --
 -- Contraintes pour les tables exportées
 --
