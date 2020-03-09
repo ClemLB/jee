@@ -17,6 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="arg0" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="arg1" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -27,11 +28,13 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "annulerVisite", propOrder = {
-    "arg0"
+    "arg0",
+    "arg1"
 })
 public class AnnulerVisite {
 
     protected String arg0;
+    protected int arg1;
 
     /**
      * Obtient la valeur de la propriété arg0.
@@ -55,6 +58,22 @@ public class AnnulerVisite {
      */
     public void setArg0(String value) {
         this.arg0 = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété arg1.
+     * 
+     */
+    public int getArg1() {
+        return arg1;
+    }
+
+    /**
+     * Définit la valeur de la propriété arg1.
+     * 
+     */
+    public void setArg1(int value) {
+        this.arg1 = value;
     }
 
 }
