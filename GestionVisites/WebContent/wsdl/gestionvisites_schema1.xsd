@@ -19,6 +19,7 @@
   <xs:complexType name="annulerVisite">
     <xs:sequence>
       <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element name="arg1" type="xs:int"/>
     </xs:sequence>
   </xs:complexType>
 

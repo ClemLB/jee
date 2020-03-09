@@ -42,6 +42,6 @@ public interface SEIGestionVisites {
 	 * @return
 	 */
 
-	boolean annulerVisite(String codeReservation);
+	boolean annulerVisite(String codeReservation, int idClient);
 
 }

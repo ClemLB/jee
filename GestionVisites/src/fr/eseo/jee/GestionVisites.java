@@ -186,7 +186,6 @@ public class GestionVisites implements SEIGestionVisites {
 			Connection conn = DriverManager.getConnection(
 					"jdbc:mysql://" + DB_ADRESSE + "/GestionnaireVisites?user=" + USERNAME + "&password=" + PASSWORD);
 
-			Statement stmt = conn.createStatement();
 			String table = "Reservations";
 
 			// Attributs de la réservation
@@ -196,7 +195,8 @@ public class GestionVisites implements SEIGestionVisites {
 			String values = "('";
 
 			if (uneReservation.getCodeVisite() != null) {
-				// On récupère l'id de la visite pour l'insertion dans la table à partir du code visite
+				// On récupère l'id de la visite pour l'insertion dans la table à partir du code
+				// visite
 				int idVisite = getIdFromCode(uneReservation.getCodeVisite());
 				if (idVisite == 0) {
 					return "Désolé ! La visite n'existe pas dans notre base de donnée. Veuillez vérifier d'avoir entré le bon code de visite.";
@@ -216,16 +216,14 @@ public class GestionVisites implements SEIGestionVisites {
 				values += nbPersonnes + "', '";
 			}
 
-			
 			columns += "booleenPaiementEffectue, ";
 			values += "0', '";
-			
+
 			// Génère un code de réservation unique et valide
 			String codeReservation = generateNewCodeReservation(7);
 			columns += "codeReservation)";
 			values += codeReservation + "')";
 			
-			stmt.close();
 			Statement stmtInsert = conn.createStatement();
 			String query = "INSERT INTO " + table + columns + "VALUES " + values;
 			stmtInsert.executeUpdate(query);
@@ -242,7 +240,8 @@ public class GestionVisites implements SEIGestionVisites {
 	}
 
 	/**
-	 * Retourne l'id  de la visite à partir de son code de visite
+	 * Retourne l'id de la visite à partir de son code de visite
+	 * 
 	 * @param codeVisite
 	 * @return int idVisite
 	 */
@@ -257,16 +256,15 @@ public class GestionVisites implements SEIGestionVisites {
 			String query = "SELECT idVisite FROM " + table + " WHERE codeVisite = '" + codeVisite + "'";
 			stmt.executeQuery(query);
 			ResultSet rs = stmt.getResultSet();
-			
-			while(rs.next())
-			{
+
+			while (rs.next()) {
 				return rs.getInt("idVisite");
 			}
-			
+
 			rs.close();
 			stmt.close();
 			conn.close();
-			
+
 			return 0;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -276,6 +274,7 @@ public class GestionVisites implements SEIGestionVisites {
 
 	/**
 	 * Génère une code de réservation aléatoire
+	 * 
 	 * @param codeLength
 	 * @return String codeReservation
 	 */
@@ -284,21 +283,21 @@ public class GestionVisites implements SEIGestionVisites {
 		String chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ12356789";
 		int longueur = chars.length();
 		String codeReservation;
-		
+
 		do {
 			codeReservation = "";
-			for(int i = 0; i < codeLength; i++) 
-			{
-				  int k = rand.nextInt(longueur);
-				  codeReservation += k;
-			}	
-		} while(checkIfExist(codeReservation));
+			for (int i = 0; i < codeLength; i++) {
+				int k = rand.nextInt(longueur);
+				codeReservation += chars.charAt(k);
+			}
+		} while (checkIfExist(codeReservation));
 
 		return codeReservation;
 	}
 
 	/**
 	 * Vérifie si le codeVisite généré existe déjà dans la db
+	 * 
 	 * @param codeVisite
 	 * @return boolean
 	 */
@@ -313,19 +312,17 @@ public class GestionVisites implements SEIGestionVisites {
 			String query = "SELECT codeReservation FROM " + table;
 			stmt.executeQuery(query);
 			ResultSet rs = stmt.getResultSet();
-			
-			while(rs.next())
-			{
-				if (rs.getString("codeReservation") == codeVisite)
-				{
+
+			while (rs.next()) {
+				if (rs.getString("codeReservation") == codeVisite) {
 					return true;
 				}
 			}
-			
+
 			rs.close();
 			stmt.close();
 			conn.close();
-			
+
 			return false;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -352,14 +349,14 @@ public class GestionVisites implements SEIGestionVisites {
 
 			// Attributs de la réservation
 
-			String query = "UPDATE " + table + " SET booleenPaiementEffectue = '1' WHERE codeReservation = "
-					+ codeReservation;
-			stmt.executeUpdate(query);
+			String query = "UPDATE " + table + " SET booleenPaiementEffectue = '1' WHERE codeReservation = '"
+					+ codeReservation + "'";
+			int res=stmt.executeUpdate(query);
 
 			stmt.close();
 			conn.close();
 
-			return "Paiement effectué !";
+			return (res == 1) ? "Paiement effectué !" : "Paiement impossible !";
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -374,7 +371,7 @@ public class GestionVisites implements SEIGestionVisites {
 	 * @return
 	 */
 
-	public boolean annulerVisite(String codeReservation) {
+	public boolean annulerVisite(String codeReservation, int idClient) {
 		try {
 			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
 			Connection conn = DriverManager.getConnection(
@@ -385,17 +382,17 @@ public class GestionVisites implements SEIGestionVisites {
 
 			// Attributs de la réservation
 
-			String query = "DELETE FROM " + table + " WHERE codeReservation = '" + codeReservation + "'";
-			stmt.executeUpdate(query);
+			String query = "DELETE FROM " + table + " WHERE codeReservation = '" + codeReservation
+					+ "' AND idClient = '" + idClient + "'";
+			int res = stmt.executeUpdate(query);
 
 			stmt.close();
 			conn.close();
 
-			return true;
+			return (res == 1) ? true : false;
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return false;
 		}
-
-		return false;
 	}
 }
