@@ -43,36 +43,40 @@ public class TrouverVisites extends HttpServlet {
 		Double prix;
 		String date;
 		String code;
+		
 		if (request.getParameter("nomVille").equals("")) {
-			ville = request.getParameter(null);
+			ville = null;
 		}else {
 			ville = request.getParameter("nomVille");
 		}
-		if (request.getParameter("nomVille").equals("")) {
-			type = request.getParameter(null);
+		if (request.getParameter("typeVisite").equals("")) {
+			type = null;
 		}else {
 			type = request.getParameter("typeVisite");
 		}
-		if (request.getParameter("nomVille").equals("")) {
-			prix = Double.valueOf(request.getParameter(null));
+		if (request.getParameter("prixVisite").equals("")) {
+			prix = null;
 		}else {
 			prix = Double.valueOf(request.getParameter("prixVisite"));
 		}
-		if (request.getParameter("nomVille").equals("")) {
-			date = request.getParameter(null);
+		if (request.getParameter("dateVisite").equals("")) {
+			date = null;
 		}else {
 			date = request.getParameter("dateVisite");
 		}
-		if (request.getParameter("nomVille").equals("")) {
-			code = request.getParameter(null);
+		if (request.getParameter("codeVisite").equals("")) {
+			code = null;
 		}else {
 			code = request.getParameter("codeVisite");
 		}
+		
+		
 		//String ville = request.getParameter("nomVille");
 		//String type = request.getParameter("typeVisite");
 		//Double prix = Double.valueOf(request.getParameter("prixVisite"));
 		//String date = request.getParameter("dateVisite");
 		//String code = request.getParameter("codeVisite");
+		
 		
 		GestionVisitesService service = new GestionVisitesService();
 		SEIGestionVisites port = service.getGestionVisitesPort();
