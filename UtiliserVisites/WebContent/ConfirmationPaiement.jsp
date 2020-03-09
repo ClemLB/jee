@@ -4,13 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Confirmation d'annulation</title>
+<title>Confirmation paiement</title>
 </head>
 <body>
 	<%
 		if ((boolean) request.getSession().getAttribute("resultat")) {
 			out.write("Votre réservation n°" + request.getSession().getAttribute("codeReservation")
-					+ " a bien été annulée");
+					+ " a bien été payée");
 		} else {
 			out.write("Veuillez nous excuser, votre requête n'a pas aboutie");
 		}

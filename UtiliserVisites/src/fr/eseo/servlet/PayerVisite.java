@@ -39,6 +39,7 @@ public class PayerVisite extends HttpServlet {
 		String answer = client.getGestionVisitesPort().payerVisite(codeReservation);
 		System.out.println(answer);
 		session.setAttribute("resultat", answer);
+		session.setAttribute("codeReservation", codeReservation);
 		RequestDispatcher rd = request.getRequestDispatcher("ConfirmationPaiement.jsp");
 		rd.forward(request, response);
 	}
