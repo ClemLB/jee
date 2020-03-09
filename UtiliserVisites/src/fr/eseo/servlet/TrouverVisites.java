@@ -3,8 +3,10 @@ package fr.eseo.servlet;
 import java.io.IOException;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import fr.eseo.jee.GestionVisitesService;
+import fr.eseo.jee.SEIGestionVisites;
 import fr.eseo.jee.Visite;
 
 /**
@@ -33,11 +37,45 @@ public class TrouverVisites extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		String ville = request.getParameter("nomVille");
-		String type = request.getParameter("typeVisite");
-		Double prix = Double.valueOf(request.getParameter("prixVisite"));
-		String date = request.getParameter("dateVisite");
-		String code = request.getParameter("codeVisite");
+		
+		String ville;
+		String type;
+		Double prix;
+		String date;
+		String code;
+		if (request.getParameter("nomVille").equals("")) {
+			ville = request.getParameter(null);
+		}else {
+			ville = request.getParameter("nomVille");
+		}
+		if (request.getParameter("nomVille").equals("")) {
+			type = request.getParameter(null);
+		}else {
+			type = request.getParameter("typeVisite");
+		}
+		if (request.getParameter("nomVille").equals("")) {
+			prix = Double.valueOf(request.getParameter(null));
+		}else {
+			prix = Double.valueOf(request.getParameter("prixVisite"));
+		}
+		if (request.getParameter("nomVille").equals("")) {
+			date = request.getParameter(null);
+		}else {
+			date = request.getParameter("dateVisite");
+		}
+		if (request.getParameter("nomVille").equals("")) {
+			code = request.getParameter(null);
+		}else {
+			code = request.getParameter("codeVisite");
+		}
+		//String ville = request.getParameter("nomVille");
+		//String type = request.getParameter("typeVisite");
+		//Double prix = Double.valueOf(request.getParameter("prixVisite"));
+		//String date = request.getParameter("dateVisite");
+		//String code = request.getParameter("codeVisite");
+		
+		GestionVisitesService service = new GestionVisitesService();
+		SEIGestionVisites port = service.getGestionVisitesPort();
 		
 		Visite visite = new Visite();
 		visite.setVille(ville);
@@ -46,18 +84,12 @@ public class TrouverVisites extends HttpServlet {
 		visite.setDateVisite(date);
 		visite.setCodeVisite(code);
 		
+		List<Visite> listeVisite = port.trouverVisite(visite);
 		
+		session.setAttribute("resListe", listeVisite);
 		
-		
-		
-		
-		try {
-			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
-			
-		} catch (SQLException e) {
-			
-		}
-		
+		RequestDispatcher dispReq = request.getRequestDispatcher("ListeVisite.jsp");
+		dispReq.forward(request, response);
 	}
 
 }
