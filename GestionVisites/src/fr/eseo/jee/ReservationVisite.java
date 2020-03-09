@@ -3,15 +3,15 @@ package fr.eseo.jee;
 public class ReservationVisite {
 
 	// Attributs
-	private String codeReservation;
 	private String codeVisite;
-	private int codeClient;
+	private int idClient;
 	private int nbPersonnes;
 	private boolean paiementEffectue;
+	private String codeReservation;
 
 	// Accesseurs
 	public String getCodeReservation() {
-		return codeReservation;
+		return this.codeReservation;
 	}
 
 	public void setCodeReservation(String codeReservation) {
@@ -19,7 +19,7 @@ public class ReservationVisite {
 	}
 
 	public String getCodeVisite() {
-		return codeVisite;
+		return this.codeVisite;
 	}
 
 	public void setCodeVisite(String codeVisite) {
@@ -27,15 +27,15 @@ public class ReservationVisite {
 	}
 
 	public int getCodeClient() {
-		return codeClient;
+		return this.idClient;
 	}
 
 	public void setCodeClient(int codeClient) {
-		this.codeClient = codeClient;
+		this.idClient = codeClient;
 	}
 
 	public int getNbPersonnes() {
-		return nbPersonnes;
+		return this.nbPersonnes;
 	}
 
 	public void setNbPersonnes(int nbPersonnes) {
@@ -43,7 +43,7 @@ public class ReservationVisite {
 	}
 
 	public boolean isPaiementEffectue() {
-		return paiementEffectue;
+		return this.paiementEffectue;
 	}
 
 	public void setPaiementEffectue(boolean paiementEffectue) {

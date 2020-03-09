@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 import javax.jws.WebService;
 
@@ -189,23 +190,19 @@ public class GestionVisites implements SEIGestionVisites {
 			String table = "Reservations";
 
 			// Attributs de la réservation
-			String codeVisite;
 			int nbPersonnes;
 
 			String columns = "(";
 			String values = "('";
-			
-			String codeReservation = "";
-			
-			// TODO générer aléatoirement le code de résa
-			// TODO vérifier qu'il n'existe pas
-			// TODO récupérer l'id de la viste à partir du code de la viste
-			
 
 			if (uneReservation.getCodeVisite() != null) {
-				codeVisite = uneReservation.getCodeVisite();
+				// On récupère l'id de la visite pour l'insertion dans la table à partir du code visite
+				int idVisite = getIdFromCode(uneReservation.getCodeVisite());
+				if (idVisite == 0) {
+					return "Désolé ! La visite n'existe pas dans notre base de donnée. Veuillez vérifier d'avoir entré le bon code de visite.";
+				}
 				columns += "idVisite, ";
-				values += codeVisite + "', '";
+				values += idVisite + "', '";
 			}
 
 			if ((Integer) uneReservation.getCodeClient() != null) {
@@ -220,8 +217,13 @@ public class GestionVisites implements SEIGestionVisites {
 			}
 
 			
-			columns += "booleenPaiementEffectue)";
-			values += "0')";
+			columns += "booleenPaiementEffectue, ";
+			values += "0', '";
+			
+			// Génère un code de réservation unique et valide
+			String codeReservation = generateNewCodeReservation(7);
+			columns += "codeReservation)";
+			values += codeReservation + "')";
 			
 			stmt.close();
 			Statement stmtInsert = conn.createStatement();
@@ -231,13 +233,104 @@ public class GestionVisites implements SEIGestionVisites {
 			stmtInsert.close();
 			conn.close();
 
-			return uneReservation.getCodeReservation();
+			return codeReservation;
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return "Une erreur est survenue lors de la réservation !";
 		}
+	}
 
-		return null;
+	/**
+	 * Retourne l'id  de la visite à partir de son code de visite
+	 * @param codeVisite
+	 * @return int idVisite
+	 */
+	private int getIdFromCode(String codeVisite) {
+		try {
+			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+			Connection conn = DriverManager.getConnection(
+					"jdbc:mysql://" + DB_ADRESSE + "/GestionnaireVisites?user=" + USERNAME + "&password=" + PASSWORD);
+
+			Statement stmt = conn.createStatement();
+			String table = "Visites";
+			String query = "SELECT idVisite FROM " + table + " WHERE codeVisite = '" + codeVisite + "'";
+			stmt.executeQuery(query);
+			ResultSet rs = stmt.getResultSet();
+			
+			while(rs.next())
+			{
+				return rs.getInt("idVisite");
+			}
+			
+			rs.close();
+			stmt.close();
+			conn.close();
+			
+			return 0;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
+
+	/**
+	 * Génère une code de réservation aléatoire
+	 * @param codeLength
+	 * @return String codeReservation
+	 */
+	private String generateNewCodeReservation(int codeLength) {
+		Random rand = new Random();
+		String chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ12356789";
+		int longueur = chars.length();
+		String codeReservation;
+		
+		do {
+			codeReservation = "";
+			for(int i = 0; i < codeLength; i++) 
+			{
+				  int k = rand.nextInt(longueur);
+				  codeReservation += k;
+			}	
+		} while(checkIfExist(codeReservation));
+
+		return codeReservation;
+	}
+
+	/**
+	 * Vérifie si le codeVisite généré existe déjà dans la db
+	 * @param codeVisite
+	 * @return boolean
+	 */
+	private boolean checkIfExist(String codeVisite) {
+		try {
+			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+			Connection conn = DriverManager.getConnection(
+					"jdbc:mysql://" + DB_ADRESSE + "/GestionnaireVisites?user=" + USERNAME + "&password=" + PASSWORD);
+
+			Statement stmt = conn.createStatement();
+			String table = "Reservations";
+			String query = "SELECT codeReservation FROM " + table;
+			stmt.executeQuery(query);
+			ResultSet rs = stmt.getResultSet();
+			
+			while(rs.next())
+			{
+				if (rs.getString("codeReservation") == codeVisite)
+				{
+					return true;
+				}
+			}
+			
+			rs.close();
+			stmt.close();
+			conn.close();
+			
+			return false;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 	/**
@@ -292,7 +385,7 @@ public class GestionVisites implements SEIGestionVisites {
 
 			// Attributs de la réservation
 
-			String query = "DELETE FROM " + table + " WHERE codeReservation = " + codeReservation;
+			String query = "DELETE FROM " + table + " WHERE codeReservation = '" + codeReservation + "'";
 			stmt.executeUpdate(query);
 
 			stmt.close();
