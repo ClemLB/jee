@@ -15,26 +15,21 @@
 		<OPTION value="angers">Angers
 		<OPTION value="nantes">Nantes
 		</SELECT>
-
-	</form>
 	
 	<br>
 	
 	<label for="typeVisite"> Type de visite : </label>
-	<form method="post" action="TrouverVisites">
 		<SELECT name="typeVisite" id="typeVisite" size="1">
 		<OPTION value="">Choisir
-		<OPTION value="musee">Musée d'art
-		<OPTION value="croisiere">Croisière
-		<OPTION value="monument">Monument cathédrale
+		<OPTION value="musée art">Musée d'art
+		<OPTION value="croisière">Croisière
+		<OPTION value="monument cathédrale">Monument cathédrale
 		<OPTION value="parc">Parc
 		</SELECT>
-	</form>
 	
 	<br>
 	
-	<label for="prixVisite"> Prix de la visite(en €) : </label>
-	<form method="post" action="TrouverVisites">
+	<label for="prixVisite"> Prix de la visite (en €) : </label>
 		<SELECT name="prixVisite" id="prixVisite" size="1">
 		<OPTION value="">Choisir
 		<OPTION value="1.99">1.99
@@ -42,20 +37,20 @@
 		<OPTION value="19.99">19.99
 		<OPTION value="49.99">49.99
 		</SELECT>
-	</form>
 	
 	<br>
 	
 	<label for="dateVisite"> Date de la visite : </label>
-	<form method="post" action="TrouverVisites">
 	<input type="date" id="dateVisite" name="dateVisite"/>
-	</form>
 	
 	<br>
 	
 	<label for="codeVisite"> Code de la visite : </label>
-	<form method="post" action="TrouverVisites">
 	<input type="text" placeholder="" id="codeVisite" name="codeVisite"/>
+	
+	<br>
+	
+	<input type="submit" value="Réserver">
 	</form>
 	
 	<br>
