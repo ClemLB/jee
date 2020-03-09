@@ -350,7 +350,7 @@ public class GestionVisites implements SEIGestionVisites {
 			// Attributs de la réservation
 
 			String query = "UPDATE " + table + " SET booleenPaiementEffectue = '1' WHERE codeReservation = '"
-					+ codeReservation + "'";
+					+ codeReservation + "' AND booleenPaiementEffectue = '0'";
 			int res=stmt.executeUpdate(query);
 
 			stmt.close();
