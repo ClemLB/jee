@@ -1,4 +1,4 @@
-<xs:schema xmlns:tns="http://jee.eseo.fr/" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified" targetNamespace="http://jee.eseo.fr/" version="1.0">
+<xs:schema xmlns:tns="http://jee.eseo.fr/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://jee.eseo.fr/" version="1.0">
 
   <xs:element name="annulerVisite" type="tns:annulerVisite"/>
 
@@ -38,7 +38,7 @@
     <xs:sequence>
       <xs:element name="codeClient" type="xs:int"/>
       <xs:element minOccurs="0" name="codeReservation" type="xs:string"/>
-      <xs:element name="codeVisite" type="xs:int"/>
+      <xs:element minOccurs="0" name="codeVisite" type="xs:string"/>
       <xs:element name="nbPersonnes" type="xs:int"/>
       <xs:element name="paiementEffectue" type="xs:boolean"/>
     </xs:sequence>

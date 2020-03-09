@@ -104,7 +104,7 @@
   </wsdl:binding>
   <wsdl:service name="GestionVisitesService">
     <wsdl:port name="GestionVisitesPort" binding="tns:GestionVisitesServiceSoapBinding">
-      <soap:address location="http://localhost:8080/GestionVisites/services/GestionVisitesPort"/>
+      <soap:address location="http://localhost:8080/GestionVisites/services"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
