@@ -38,9 +38,9 @@ public class AnnulerVisite extends HttpServlet {
 
 		GestionVisitesService service = new GestionVisitesService();
 		SEIGestionVisites port = service.getGestionVisitesPort();
-		// boolean res = port.annulerVisite(request.getParameter("codeRes"), idClient);
-		boolean res = port.annulerVisite(request.getParameter("codeRes"));
+		boolean res = port.annulerVisite(request.getParameter("codeRes"), idClient);
 		session.setAttribute("resultat", res);
+		session.setAttribute("codeReservation", request.getParameter("codeRes"));
 		RequestDispatcher dispt = request.getRequestDispatcher("ConfirmationAnnulation.jsp");
 		dispt.forward(request, response);
 	}
