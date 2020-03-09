@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="GestionVisitesService" targetNamespace="http://jee.eseo.fr/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://jee.eseo.fr/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema">
+  <import namespace="http://jee.eseo.fr/" schemaLocation="gestionvisites_schema1.xsd"/>
+</schema>
+  </wsdl:types>
+  <wsdl:message name="annulerVisite">
+    <wsdl:part name="parameters" element="tns:annulerVisite">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="trouverVisiteResponse">
+    <wsdl:part name="parameters" element="tns:trouverVisiteResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="trouverVisite">
+    <wsdl:part name="parameters" element="tns:trouverVisite">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="annulerVisiteResponse">
+    <wsdl:part name="parameters" element="tns:annulerVisiteResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="payerVisiteResponse">
+    <wsdl:part name="parameters" element="tns:payerVisiteResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="reserverVisite">
+    <wsdl:part name="parameters" element="tns:reserverVisite">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="reserverVisiteResponse">
+    <wsdl:part name="parameters" element="tns:reserverVisiteResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="payerVisite">
+    <wsdl:part name="parameters" element="tns:payerVisite">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="SEIGestionVisites">
+    <wsdl:operation name="annulerVisite">
+      <wsdl:input name="annulerVisite" message="tns:annulerVisite">
+    </wsdl:input>
+      <wsdl:output name="annulerVisiteResponse" message="tns:annulerVisiteResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="reserverVisite">
+      <wsdl:input name="reserverVisite" message="tns:reserverVisite">
+    </wsdl:input>
+      <wsdl:output name="reserverVisiteResponse" message="tns:reserverVisiteResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="payerVisite">
+      <wsdl:input name="payerVisite" message="tns:payerVisite">
+    </wsdl:input>
+      <wsdl:output name="payerVisiteResponse" message="tns:payerVisiteResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="trouverVisite">
+      <wsdl:input name="trouverVisite" message="tns:trouverVisite">
+    </wsdl:input>
+      <wsdl:output name="trouverVisiteResponse" message="tns:trouverVisiteResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GestionVisitesServiceSoapBinding" type="tns:SEIGestionVisites">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="annulerVisite">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="annulerVisite">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="annulerVisiteResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="reserverVisite">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="reserverVisite">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="reserverVisiteResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="payerVisite">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="payerVisite">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="payerVisiteResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="trouverVisite">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="trouverVisite">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="trouverVisiteResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GestionVisitesService">
+    <wsdl:port name="GestionVisitesPort" binding="tns:GestionVisitesServiceSoapBinding">
+      <soap:address location="http://localhost:8080/GestionVisites/services/GestionVisitesPort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
