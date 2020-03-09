@@ -9,14 +9,9 @@
 <body>
 
 Le client au nom de 
-	<% 
-		Client client = (Client) request.getSession().getAttribute("client");
-		out.print(client.getPrenom());
-		out.print(" ");
-		out.print(client.getNom());
-		out.print(" ");
+	<%= session.getAttribute("clientPrenom") %>
 	
-	%>
+	<%= session.getAttribute("clientNom") %>
 	
 	avec le code 
 	<%= session.getAttribute("reservation") %> 

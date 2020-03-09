@@ -39,7 +39,7 @@ public class ReserverVisite extends HttpServlet {
 		HttpSession session = request.getSession();
 		String codeVisite = request.getParameter("codeVis");
 		int nombrePersonnes = Integer.valueOf(request.getParameter("nbrClient"));
-		Client client = (Client) session.getAttribute("client");
+		int clientID = (int) session.getAttribute("clientNom");
 		
 		GestionVisitesService service = new GestionVisitesService();
 		SEIGestionVisites port = service.getGestionVisitesPort();
@@ -51,7 +51,7 @@ public class ReserverVisite extends HttpServlet {
 		ReservationVisite reservationVoulue = new ReservationVisite();
 		reservationVoulue.setCodeVisite(visiteChoisie.getCodeVisite());
 		reservationVoulue.setNbPersonnes(nombrePersonnes);
-		reservationVoulue.setCodeClient(client.getIdClient());
+		reservationVoulue.setCodeClient(clientID);
 		
 		String reservation = port.reserverVisite(reservationVoulue);
 		

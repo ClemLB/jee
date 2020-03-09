@@ -67,7 +67,9 @@ public class VerifierLogin extends HttpServlet {
 				client.setPrenom(rset.getString("prenom"));
 			}
 
-			session.setAttribute("client", client);
+			session.setAttribute("clientNom", client.getNom());
+			session.setAttribute("clientPrenom", client.getPrenom());
+			session.setAttribute("clientID", client.getIdClient());
 			rset.close();
 			stmt.close();
 			connection.close();
