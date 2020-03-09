@@ -49,13 +49,15 @@ public class GestionVisites implements SEIGestionVisites {
 				nonNull++;
 			}
 		}
-		String sql = "SELECT * FROM Visites WHERE ";
+		String sql = "SELECT * FROM Visites";
 		switch (nonNull) {
 		case 5:
+			sql += " WHERE ";
 			sql += "codeVisite = \"" + codeVisite + "\" AND typeVisite = \"" + typeVisite + "\" AND ville = \"" + ville
 					+ "\" AND dateVisite = \"" + dateVisite + "\" AND prixVisite = \"" + prix + "\"";
 			break;
 		case 4:
+			sql += " WHERE ";
 			if (codeVisite != null) {
 				sql += "typeVisite = \"" + typeVisite + "\" AND ville = \"" + ville + "\" AND dateVisite = \""
 						+ dateVisite + "\" AND prixVisite = \"" + prix + "\"";
@@ -74,6 +76,7 @@ public class GestionVisites implements SEIGestionVisites {
 			}
 			break;
 		case 3:
+			sql += " WHERE ";
 			if (codeVisite != null && typeVisite != null) {
 				sql += "ville = \"" + ville + "\" AND dateVisite = \"" + dateVisite + "\" AND prixVisite = \"" + prix
 						+ "\"";
@@ -107,6 +110,7 @@ public class GestionVisites implements SEIGestionVisites {
 			}
 			break;
 		case 2:
+			sql += " WHERE ";
 			if (codeVisite != null && typeVisite != null) {
 				sql += "codeVisite = \"" + codeVisite + "\" AND typeVisite = \"" + typeVisite + "\"";
 			} else if (codeVisite != null && ville != null) {
@@ -130,6 +134,7 @@ public class GestionVisites implements SEIGestionVisites {
 			}
 			break;
 		case 1:
+			sql += " WHERE ";
 			if (codeVisite != null) {
 				sql += "codeVisite = \"" + codeVisite + "\"";
 			} else if (typeVisite != null) {
@@ -223,7 +228,7 @@ public class GestionVisites implements SEIGestionVisites {
 			String codeReservation = generateNewCodeReservation(7);
 			columns += "codeReservation)";
 			values += codeReservation + "')";
-			
+
 			Statement stmtInsert = conn.createStatement();
 			String query = "INSERT INTO " + table + columns + "VALUES " + values;
 			stmtInsert.executeUpdate(query);
@@ -351,7 +356,7 @@ public class GestionVisites implements SEIGestionVisites {
 
 			String query = "UPDATE " + table + " SET booleenPaiementEffectue = '1' WHERE codeReservation = '"
 					+ codeReservation + "' AND booleenPaiementEffectue = '0'";
-			int res=stmt.executeUpdate(query);
+			int res = stmt.executeUpdate(query);
 
 			stmt.close();
 			conn.close();

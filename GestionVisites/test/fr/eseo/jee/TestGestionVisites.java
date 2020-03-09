@@ -13,7 +13,8 @@ import org.junit.Test;
 
 public class TestGestionVisites {
 	
-	static final String DB_ADRESSE = "localhost";
+	//static final String DB_ADRESSE = "localhost";
+	static final String DB_ADRESSE = "192.168.4.197";
 
 	@Test
 	public void testTrouverVisite() {
