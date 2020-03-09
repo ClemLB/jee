@@ -12,10 +12,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class TestPayerVisite {
-	
-	static final String DB_ADRESSE = "localhost";
-	static final String USERNAME = "java";
-	static final String PASSWORD = "network";
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -23,7 +19,7 @@ public class TestPayerVisite {
 			// Création d'une visite de test
 			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
 			Connection conn = DriverManager
-					.getConnection("jdbc:mysql://" + DB_ADRESSE + "/GestionnaireVisites?user="+ USERNAME +"&password="+ PASSWORD);
+					.getConnection("jdbc:mysql://" + AllTests.DB_ADRESSE + "/GestionnaireVisites?user="+ AllTests.USERNAME +"&password="+ AllTests.PASSWORD);
 
 			Statement stmt = conn.createStatement();
 
@@ -53,7 +49,7 @@ public class TestPayerVisite {
 			// Création d'une visite de test
 			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
 			Connection conn = DriverManager
-					.getConnection("jdbc:mysql://" + DB_ADRESSE + "/GestionnaireVisites?user="+ USERNAME +"&password="+ PASSWORD);
+					.getConnection("jdbc:mysql://" + AllTests.DB_ADRESSE + "/GestionnaireVisites?user="+ AllTests.USERNAME +"&password="+ AllTests.PASSWORD);
 
 			Statement stmt = conn.createStatement();
 
@@ -86,7 +82,7 @@ public class TestPayerVisite {
 		try {
 			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
 			Connection conn = DriverManager
-					.getConnection("jdbc:mysql://" + DB_ADRESSE + "/GestionnaireVisites?user="+ USERNAME +"&password="+ PASSWORD);
+					.getConnection("jdbc:mysql://" + AllTests.DB_ADRESSE + "/GestionnaireVisites?user="+ AllTests.USERNAME +"&password="+ AllTests.PASSWORD);
 
 			Statement stmt = conn.createStatement();
 
@@ -120,7 +116,7 @@ public class TestPayerVisite {
 		try {
 			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
 			Connection conn = DriverManager
-					.getConnection("jdbc:mysql://" + DB_ADRESSE + "/GestionnaireVisites?user="+ USERNAME +"&password="+ PASSWORD);
+					.getConnection("jdbc:mysql://" + AllTests.DB_ADRESSE + "/GestionnaireVisites?user="+ AllTests.USERNAME +"&password="+ AllTests.PASSWORD);
 
 			Statement stmt = conn.createStatement();
 

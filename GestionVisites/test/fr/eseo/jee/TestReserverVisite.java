@@ -15,16 +15,13 @@ import com.mysql.cj.jdbc.Driver;
 
 public class TestReserverVisite {
 
-	static final String DB_ADRESSE = "192.168.4.197";
-	static final String USERNAME = "java";
-	static final String PASSWORD = "network";
-
 	@BeforeClass
 	public static void creationVisiteTest() {
 		try {
 			DriverManager.registerDriver(new Driver());
-			Connection conn = DriverManager.getConnection("jdbc:mysql://" + DB_ADRESSE + "/GestionnaireVisites",
-					USERNAME, PASSWORD);
+			Connection conn = DriverManager.getConnection(
+					"jdbc:mysql://" + AllTests.DB_ADRESSE + "/GestionnaireVisites", AllTests.USERNAME,
+					AllTests.PASSWORD);
 
 			Statement stmt = conn.createStatement();
 
@@ -42,8 +39,9 @@ public class TestReserverVisite {
 	public static void supressionVisiteTest() {
 		try {
 			DriverManager.registerDriver(new Driver());
-			Connection conn = DriverManager.getConnection("jdbc:mysql://" + DB_ADRESSE + "/GestionnaireVisites",
-					USERNAME, PASSWORD);
+			Connection conn = DriverManager.getConnection(
+					"jdbc:mysql://" + AllTests.DB_ADRESSE + "/GestionnaireVisites", AllTests.USERNAME,
+					AllTests.PASSWORD);
 
 			Statement stmt = conn.createStatement();
 
@@ -70,8 +68,9 @@ public class TestReserverVisite {
 
 		try {
 			DriverManager.registerDriver(new Driver());
-			Connection conn = DriverManager.getConnection("jdbc:mysql://" + DB_ADRESSE + "/GestionnaireVisites",
-					USERNAME, PASSWORD);
+			Connection conn = DriverManager.getConnection(
+					"jdbc:mysql://" + AllTests.DB_ADRESSE + "/GestionnaireVisites", AllTests.USERNAME,
+					AllTests.PASSWORD);
 
 			Statement stmt = conn.createStatement();
 
@@ -110,8 +109,9 @@ public class TestReserverVisite {
 
 		try {
 			DriverManager.registerDriver(new Driver());
-			Connection conn = DriverManager.getConnection("jdbc:mysql://" + DB_ADRESSE + "/GestionnaireVisites",
-					USERNAME, PASSWORD);
+			Connection conn = DriverManager.getConnection(
+					"jdbc:mysql://" + AllTests.DB_ADRESSE + "/GestionnaireVisites", AllTests.USERNAME,
+					AllTests.PASSWORD);
 
 			Statement stmt = conn.createStatement();
 
