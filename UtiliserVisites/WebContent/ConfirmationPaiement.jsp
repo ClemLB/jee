@@ -8,11 +8,13 @@
 </head>
 <body>
 	<%
-		if ((boolean) request.getSession().getAttribute("resultat")) {
+		if (request.getSession().getAttribute("resultat").equals("Paiement effectué !")) {
 			out.write("Votre réservation n°" + request.getSession().getAttribute("codeReservation")
 					+ " a bien été payée");
+		} else if(request.getSession().getAttribute("resultat").equals("Paiement impossible !")){
+			out.write("Veuillez nous excuser, il vous est impossible de payer pour cette réservation");
 		} else {
-			out.write("Veuillez nous excuser, votre requête n'a pas aboutie");
+			out.write("Veuillez nous excuser, un problème lors du paiement est survenu");
 		}
 	%>
 	<br />
