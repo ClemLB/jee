@@ -20,19 +20,23 @@
 			out.print("Le réservation du client au nom de ");
 			out.print(request.getSession().getAttribute("clientPrenom"));
 			out.print(" ");
-			out.print(request.getSession().getAttribute("clientPrenom"));
+			out.print(request.getSession().getAttribute("clientNom"));
 			out.print(" a bien été effectuée.");
 			
 			out.print("</br></br>");
 			out.print("Code Réservation :");
 			out.print(request.getSession().getAttribute("reservation"));
 			
+			out.print("</br></br>");
+			out.print("<form action=\"reserverVisite.html\">");
+			out.print("<button type=\"submit\">Retour Menu</button>");
+			out.print("</form>");
+			
 		}
 	%>
 	
 
-	</br>
-	</br>
+	</br></br>
 
 	<form action="menu.html">
 		<button type="submit">Retour Menu</button>
