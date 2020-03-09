@@ -53,7 +53,7 @@ public class ReserverVisite extends HttpServlet {
 		reservationVoulue.setNbPersonnes(nombrePersonnes);
 		reservationVoulue.setCodeClient(client.getIdClient());
 		
-		RequestDispatcher dispt = request.getRequestDispatcher("confirmationReservation.jsp");
+		RequestDispatcher dispt = request.getRequestDispatcher("ConfirmationReservation.jsp");
 		dispt.forward(request, response);
 		
 		

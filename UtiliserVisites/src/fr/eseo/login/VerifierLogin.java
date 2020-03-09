@@ -48,7 +48,7 @@ public class VerifierLogin extends HttpServlet {
 			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
 
 			Connection connection = DriverManager.getConnection(
-					"jdbc:mysql://" + DB_ADRESSE + "/GestionnaireVisites?user=" + DB_LOGIN + "&password=" + DB_MDP);
+					"jdbc:mysql://" + DB_ADRESSE + "/ClientsVisites?user=" + DB_LOGIN + "&password=" + DB_MDP);
 
 			Statement stmt = connection.createStatement();
 
