@@ -14,6 +14,10 @@
 	
 		if (session.getAttribute("reservation").equals(phrase)){
 			out.print(phrase);
+			out.print("</br></br>");
+			out.print("<form action=\"reserverVisite.html\">");
+			out.print("<button type=\"submit\">Retour Page Réservation</button>");
+			out.print("</form>");
 			
 
 		}else{
@@ -24,13 +28,8 @@
 			out.print(" a bien été effectuée.");
 			
 			out.print("</br></br>");
-			out.print("Code Réservation :");
+			out.print("Code Réservation : ");
 			out.print(request.getSession().getAttribute("reservation"));
-			
-			out.print("</br></br>");
-			out.print("<form action=\"reserverVisite.html\">");
-			out.print("<button type=\"submit\">Retour Menu</button>");
-			out.print("</form>");
 			
 		}
 	%>
