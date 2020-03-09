@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence&gt;
  *         &lt;element name="codeClient" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
  *         &lt;element name="codeReservation" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *         &lt;element name="codeVisite" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
+ *         &lt;element name="codeVisite" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="nbPersonnes" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
  *         &lt;element name="paiementEffectue" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
  *       &lt;/sequence&gt;
@@ -41,7 +41,7 @@ public class ReservationVisite {
 
     protected int codeClient;
     protected String codeReservation;
-    protected int codeVisite;
+    protected String codeVisite;
     protected int nbPersonnes;
     protected boolean paiementEffectue;
 
@@ -88,16 +88,24 @@ public class ReservationVisite {
     /**
      * Obtient la valeur de la propriété codeVisite.
      * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public int getCodeVisite() {
+    public String getCodeVisite() {
         return codeVisite;
     }
 
     /**
      * Définit la valeur de la propriété codeVisite.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setCodeVisite(int value) {
+    public void setCodeVisite(String value) {
         this.codeVisite = value;
     }
 
