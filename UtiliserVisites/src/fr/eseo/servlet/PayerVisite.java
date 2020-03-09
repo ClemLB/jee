@@ -30,15 +30,16 @@ public class PayerVisite extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String codeReservation = request.getParameter("codeReservation");
 		HttpSession session = request.getSession();
 		
 		GestionVisitesService client = new GestionVisitesService();
 		
 		String answer = client.getGestionVisitesPort().payerVisite(codeReservation);
-		
-		session.setAttribute("farenheit", answer);
-		RequestDispatcher rd = request.getRequestDispatcher("Answer.jsp");
+		System.out.println(answer);
+		session.setAttribute("resultat", answer);
+		RequestDispatcher rd = request.getRequestDispatcher("ConfirmationPaiement.jsp");
 		rd.forward(request, response);
 	}
 

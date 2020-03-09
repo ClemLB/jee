@@ -34,11 +34,11 @@ public class AnnulerVisite extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		//int idClient = ((Client) session.getAttribute("client")).getIdClient();
-		
+		int idClient = (int) session.getAttribute("clientID");
+
 		GestionVisitesService service = new GestionVisitesService();
 		SEIGestionVisites port = service.getGestionVisitesPort();
-		//boolean res = port.annulerVisite(request.getParameter("codeRes"), idClient);
+		// boolean res = port.annulerVisite(request.getParameter("codeRes"), idClient);
 		boolean res = port.annulerVisite(request.getParameter("codeRes"));
 		session.setAttribute("resultat", res);
 		RequestDispatcher dispt = request.getRequestDispatcher("ConfirmationAnnulation.jsp");

@@ -39,7 +39,7 @@ public class ReserverVisite extends HttpServlet {
 		HttpSession session = request.getSession();
 		String codeVisite = request.getParameter("codeVis");
 		int nombrePersonnes = Integer.valueOf(request.getParameter("nbrClient"));
-		int clientID = (int) session.getAttribute("clientNom");
+		int clientID = (int) session.getAttribute("clientID");
 		
 		GestionVisitesService service = new GestionVisitesService();
 		SEIGestionVisites port = service.getGestionVisitesPort();
