@@ -22,7 +22,6 @@ public interface SEIGestionVisites {
 	 * @param uneReservation
 	 * @return
 	 */
-
 	String reserverVisite(ReservationVisite uneReservation);
 
 	/**
@@ -30,18 +29,16 @@ public interface SEIGestionVisites {
 	 * paramètre
 	 * 
 	 * @param codeReservation
-	 * @return
+	 * @return String message
 	 */
-
 	String payerVisite(String codeReservation);
 
 	/**
-	 * Permet d'annuler une réservation à partir de son code de réservation
+	 * Permet d'annuler une réservation à partir de son code de réservation.
 	 * 
 	 * @param codeReservation
 	 * @return
 	 */
-
 	boolean annulerVisite(String codeReservation, int idClient);
 
 }
