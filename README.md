@@ -18,18 +18,18 @@ Améliorations apportées :
 
 Tests effectués :
 -
-  - reserverVisite
-    -réserver une visite existante
+  reserverVisite :
+    ° réserver une visite existante
     ° ne pas pouvoir réserver une visite n'existant pas
-  - payerVisite
+  payerVisite
     ° payer une réservation existante
     ° ne pas pouvoir payer une réservation n'existant pas
-  - annulerVisite
+  annulerVisite :
     ° client qui annule une réservation payée existante et le concerant uniquement
     ° client qui annule une réservation non payée existante et le concerant uniquement
     ° ne pas pouvoir annuler une réservation n'existant pas
     ° ne pas pouvoir annuler une réservation exitante mais ne concernant pas le client
-  - trouverVisite
+  trouverVisite :
     ° ne pas trouver une visite n'existant pas
     ° trouver une visite existante grâce au type de visite
     ° trouver plusieurs visites existantes grâce à la ville
