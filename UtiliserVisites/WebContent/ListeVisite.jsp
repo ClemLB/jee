@@ -35,7 +35,7 @@
 	
 	<br><br>
 	
-	<form action="menu.html">
+	<form action="menu.jsp">
          <button type="submit">Retour Menu</button>
     </form> 
 </body>

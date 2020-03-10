@@ -19,7 +19,7 @@
 	%>
 	<br />
 	<br />
-	<form action="menu.html">
+	<form action="menu.jsp">
 		<button type="submit">Retour au menu</button>
 	</form>
 </body>
