@@ -22,3 +22,13 @@ body {
 .inscription {
 	text-align: center;
 }
+
+.inscription-link {
+	text-decoration: none;
+	color: aliceblue;
+	transition: all 0.3s;
+}
+
+.inscription-link:hover {
+	color: lightseagreen;
+}
