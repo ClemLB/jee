@@ -9,7 +9,7 @@ public class ReservationVisite {
 	private boolean paiementEffectue;
 	private String codeReservation;
 
-	// Accesseurs
+	// Accesseurs et mutateurs
 	public String getCodeReservation() {
 		return this.codeReservation;
 	}

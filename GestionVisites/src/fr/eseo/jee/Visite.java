@@ -9,7 +9,7 @@ public class Visite {
 	private String dateVisite;
 	private double prix;
 
-	// Getters & Setters
+	// Accesseurs et mutateurs
 
 	public String getCodeVisite() {
 		return this.codeVisite;

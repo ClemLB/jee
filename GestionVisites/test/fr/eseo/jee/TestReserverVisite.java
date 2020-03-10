@@ -23,8 +23,8 @@ public class TestReserverVisite {
 					"jdbc:mysql://" + AllTests.DB_ADRESSE + "/GestionnaireVisites", AllTests.USERNAME,
 					AllTests.PASSWORD);
 
+			// Création d'une visite de test
 			Statement stmt = conn.createStatement();
-
 			String query = "INSERT INTO Visites(typeVisite, ville, dateVisite, prixVisite, codeVisite) VALUES ('test', 'angers', '2020-03-25', '29.99', 'teangers250320')";
 			stmt.executeUpdate(query);
 
@@ -43,8 +43,8 @@ public class TestReserverVisite {
 					"jdbc:mysql://" + AllTests.DB_ADRESSE + "/GestionnaireVisites", AllTests.USERNAME,
 					AllTests.PASSWORD);
 
+			// Suppression d'une visite de test
 			Statement stmt = conn.createStatement();
-
 			String query = "DELETE FROM Visites WHERE codeVisite = 'teangers250320'";
 			stmt.executeUpdate(query);
 
@@ -133,6 +133,8 @@ public class TestReserverVisite {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		// On compare le nombre de réservation avant et après la tentative de
+		// réservation
 		Assert.assertEquals("La réservation n'a pas pu se faire", nbReservationAvant, nbReservationApres);
 	}
 

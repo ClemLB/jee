@@ -12,6 +12,8 @@ import java.util.Random;
 
 import javax.jws.WebService;
 
+import com.mysql.cj.jdbc.Driver;
+
 @WebService(targetNamespace = "http://jee.eseo.fr/", endpointInterface = "fr.eseo.jee.SEIGestionVisites", portName = "GestionVisitesPort", serviceName = "GestionVisitesService")
 public class GestionVisites implements SEIGestionVisites {
 
@@ -50,6 +52,7 @@ public class GestionVisites implements SEIGestionVisites {
 			}
 		}
 		String sql = "SELECT * FROM Visites";
+		// Switch sur le nombre d'attributs non nuls de la visite
 		switch (nonNull) {
 		case 5:
 			sql += " WHERE ";
@@ -150,8 +153,9 @@ public class GestionVisites implements SEIGestionVisites {
 		default:
 			break;
 		}
+		// Connexion à la base de données
 		try {
-			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+			DriverManager.registerDriver(new Driver());
 			Connection con = DriverManager.getConnection("jdbc:mysql://" + DB_ADRESSE + "/GestionnaireVisites",
 					USERNAME, PASSWORD);
 
@@ -184,8 +188,8 @@ public class GestionVisites implements SEIGestionVisites {
 	 * @param uneReservation
 	 * @return
 	 */
-
 	public String reserverVisite(ReservationVisite uneReservation) {
+		// Connexion à la base de données
 		try {
 			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
 			Connection conn = DriverManager.getConnection(
@@ -245,105 +249,14 @@ public class GestionVisites implements SEIGestionVisites {
 	}
 
 	/**
-	 * Retourne l'id de la visite à partir de son code de visite
-	 * 
-	 * @param codeVisite
-	 * @return int idVisite
-	 */
-	private int getIdFromCode(String codeVisite) {
-		try {
-			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
-			Connection conn = DriverManager.getConnection(
-					"jdbc:mysql://" + DB_ADRESSE + "/GestionnaireVisites?user=" + USERNAME + "&password=" + PASSWORD);
-
-			Statement stmt = conn.createStatement();
-			String table = "Visites";
-			String query = "SELECT idVisite FROM " + table + " WHERE codeVisite = '" + codeVisite + "'";
-			stmt.executeQuery(query);
-			ResultSet rs = stmt.getResultSet();
-
-			while (rs.next()) {
-				return rs.getInt("idVisite");
-			}
-
-			rs.close();
-			stmt.close();
-			conn.close();
-
-			return 0;
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return 0;
-		}
-	}
-
-	/**
-	 * Génère une code de réservation aléatoire
-	 * 
-	 * @param codeLength
-	 * @return String codeReservation
-	 */
-	private String generateNewCodeReservation(int codeLength) {
-		Random rand = new Random();
-		String chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ12356789";
-		int longueur = chars.length();
-		String codeReservation;
-
-		do {
-			codeReservation = "";
-			for (int i = 0; i < codeLength; i++) {
-				int k = rand.nextInt(longueur);
-				codeReservation += chars.charAt(k);
-			}
-		} while (checkIfExist(codeReservation));
-
-		return codeReservation;
-	}
-
-	/**
-	 * Vérifie si le codeVisite généré existe déjà dans la db
-	 * 
-	 * @param codeVisite
-	 * @return boolean
-	 */
-	private boolean checkIfExist(String codeVisite) {
-		try {
-			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
-			Connection conn = DriverManager.getConnection(
-					"jdbc:mysql://" + DB_ADRESSE + "/GestionnaireVisites?user=" + USERNAME + "&password=" + PASSWORD);
-
-			Statement stmt = conn.createStatement();
-			String table = "Reservations";
-			String query = "SELECT codeReservation FROM " + table;
-			stmt.executeQuery(query);
-			ResultSet rs = stmt.getResultSet();
-
-			while (rs.next()) {
-				if (rs.getString("codeReservation") == codeVisite) {
-					return true;
-				}
-			}
-
-			rs.close();
-			stmt.close();
-			conn.close();
-
-			return false;
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return false;
-		}
-	}
-
-	/**
 	 * Permet de payer la réservation avec le code de reservation passer en
 	 * paramètre
 	 * 
 	 * @param codeReservation
-	 * @return
+	 * @return String message
 	 */
-
 	public String payerVisite(String codeReservation) {
+		// Connexion à la base de données
 		try {
 			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
 			Connection conn = DriverManager.getConnection(
@@ -370,13 +283,13 @@ public class GestionVisites implements SEIGestionVisites {
 	}
 
 	/**
-	 * Permet d'annuler une réservation à partir de son code de réservation
+	 * Permet d'annuler une réservation à partir de son code de réservation.
 	 * 
 	 * @param codeReservation
 	 * @return
 	 */
-
 	public boolean annulerVisite(String codeReservation, int idClient) {
+		// Connexion à la base de données
 		try {
 			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
 			Connection conn = DriverManager.getConnection(
@@ -395,6 +308,105 @@ public class GestionVisites implements SEIGestionVisites {
 			conn.close();
 
 			return (res == 1) ? true : false;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	// Méthodes privées permettant de simplifier le code
+
+	/**
+	 * Méthode privée permettant de simplifier le code. Retourne l'id de la visite à
+	 * partir de son code de visite.
+	 * 
+	 * @param codeVisite
+	 * @return int idVisite
+	 */
+	private int getIdFromCode(String codeVisite) {
+		// Connexion à la base de données
+		try {
+			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+			Connection conn = DriverManager.getConnection(
+					"jdbc:mysql://" + DB_ADRESSE + "/GestionnaireVisites?user=" + USERNAME + "&password=" + PASSWORD);
+
+			Statement stmt = conn.createStatement();
+			String table = "Visites";
+			String query = "SELECT idVisite FROM " + table + " WHERE codeVisite = '" + codeVisite + "'";
+			stmt.executeQuery(query);
+			ResultSet rs = stmt.getResultSet();
+
+			// On sait qu'il n'y a au maximum qu'un idVisite
+			while (rs.next()) {
+				return rs.getInt("idVisite");
+			}
+
+			rs.close();
+			stmt.close();
+			conn.close();
+
+			return 0;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
+
+	/**
+	 * Méthode privée permettant de simplifier le code. Génère une code de
+	 * réservation aléatoire et non existant dans la base de données.
+	 * 
+	 * @param codeLength
+	 * @return String codeReservation
+	 */
+	private String generateNewCodeReservation(int codeLength) {
+		Random rand = new Random();
+		String chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ12356789";
+		int longueur = chars.length();
+		String codeReservation;
+
+		do {
+			codeReservation = "";
+			for (int i = 0; i < codeLength; i++) {
+				int k = rand.nextInt(longueur);
+				codeReservation += chars.charAt(k);
+			}
+		} while (checkIfExist(codeReservation));
+
+		return codeReservation;
+	}
+
+	/**
+	 * Méthode privée permettant de simplifier le code. Vérifie si le codeVisite
+	 * généré existe déjà dans la base de données
+	 * 
+	 * @param codeVisite
+	 * @return boolean
+	 */
+	private boolean checkIfExist(String codeVisite) {
+		// Connexion à la base de données
+		try {
+			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+			Connection conn = DriverManager.getConnection(
+					"jdbc:mysql://" + DB_ADRESSE + "/GestionnaireVisites?user=" + USERNAME + "&password=" + PASSWORD);
+
+			Statement stmt = conn.createStatement();
+			String table = "Reservations";
+			String query = "SELECT codeReservation FROM " + table;
+			stmt.executeQuery(query);
+			ResultSet rs = stmt.getResultSet();
+
+			while (rs.next()) {
+				if (rs.getString("codeReservation") == codeVisite) {
+					return true;
+				}
+			}
+
+			rs.close();
+			stmt.close();
+			conn.close();
+
+			return false;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;

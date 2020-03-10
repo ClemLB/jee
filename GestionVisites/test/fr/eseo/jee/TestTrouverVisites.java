@@ -23,10 +23,12 @@ public class TestTrouverVisites {
 					"jdbc:mysql://" + AllTests.DB_ADRESSE + "/GestionnaireVisites", AllTests.USERNAME,
 					AllTests.PASSWORD);
 
+			// Création d'un visite de test
 			Statement stmt = conn.createStatement();
-
 			String query = "INSERT INTO Visites(typeVisite, ville, dateVisite, prixVisite, codeVisite) VALUES ('test', 'angersTest', '2020-03-25', '29.99', 'teangers250320')";
 			stmt.executeUpdate(query);
+
+			// Création d'une visite de test
 			query = "INSERT INTO Visites(typeVisite, ville, dateVisite, prixVisite, codeVisite) VALUES ('test2', 'angersTest', '2020-03-26', '39.99', 'teangers260320')";
 			stmt.executeUpdate(query);
 
@@ -47,9 +49,11 @@ public class TestTrouverVisites {
 
 			Statement stmt = conn.createStatement();
 
+			// Suppression d'une visite de test
 			String query = "DELETE FROM Visites WHERE codeVisite = 'teangers250320'";
 			stmt.executeUpdate(query);
 
+			// Suppression d'une visite de test
 			query = "DELETE FROM Visites WHERE codeVisite = 'teangers260320'";
 			stmt.executeUpdate(query);
 
