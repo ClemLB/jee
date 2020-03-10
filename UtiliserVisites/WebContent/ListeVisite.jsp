@@ -11,15 +11,16 @@
 	<%= request.getSession().getAttribute("resPhrase") %> <br><br>
 	
 	<% 
-	ArrayList<Visite> list = (ArrayList<Visite>) request.getAttribute("test");
+	ArrayList<Visite> list = (ArrayList<Visite>) request.getSession().getAttribute("test");
 	if(!list.isEmpty()) {
 		Visite villeTest = new Visite();
 
 		for(int i = 0; i < list.size(); i++) {
 			villeTest = list.get(i);
 			
+			out.write("<p>");
 			out.println("Visite :");
-			out.print("Ville : ");
+			out.println("Ville : ");
 			out.print(villeTest.getVille());
 			out.print(" | Type : ");
 			out.print(villeTest.getTypeVisite());
@@ -29,6 +30,7 @@
 			out.print(String.valueOf(villeTest.getPrix()));
 			out.print(" | Code : ");
 			out.print(villeTest.getCodeVisite());
+			out.write("</p>");
 		}
 	}
 	%>
