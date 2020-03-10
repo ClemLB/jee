@@ -3,32 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <title>Inscription</title>
+<link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 
 <body>
+	<div class="main-title">
+		<p>Inscription</p>
+	</div>
 
-	<h1>Inscription :</h1>
 	<br>
 	<form method="post" action="CreerUtilisateur" style="text-align: center;" accept-charset="UTF-8">
 		<label for="nom"> Nom : </label> 
-		<input type="nom" id="nom" name="nom" placeholder="nom"  required 
+		<input type="text" id="nom" name="nom" placeholder="nom"  required 
 		onkeyup="this.value=this.value.replace(/[éèêë]/g,'e').replace(/[àäâ]/g,'a').replace(/[ïî]/g,'i').replace(/[ûü]/g,'u').replace(/[öô]/g,'o')"/> 
 		<br>
 		<br> 
 		
-		<label for="prenom"> Prenom : </label> 
-		<input type="prenom" id="prenom" name="prenom" placeholder="prenom"  required 
+		<label for="prenom"> Prénom : </label> 
+		<input type="text" id="prenom" name="prenom" placeholder="prenom"  required 
 		onkeyup="this.value=this.value.replace(/[éèêë]/g,'e').replace(/[àäâ]/g,'a').replace(/[ïî]/g,'i').replace(/[ûü]/g,'u').replace(/[öô]/g,'o')"/> 
 		<br>
 		<br> 
 		
-		<label for="email"> Adresse email : </label> 
+		<label for="email"> E-mail : </label> 
 		<input type="email" id="email" name="email" placeholder="adresse e-mail"  required 
 		onkeyup="this.value=this.value.replace(/[éèêë]/g,'e').replace(/[àäâ]/g,'a').replace(/[ïî]/g,'i').replace(/[ûü]/g,'u').replace(/[öô]/g,'o')"/> 
 		<br>
 		<br> 
 		
-		<label for="motDePasse"> Mot de Passe : </label> 
+		<label for="motDePasse"> Mot de passe : </label> 
 		<input type="password" id="motDePasse" placeholder="mot de passe" name="motDePasse" required 
 		onkeyup="this.value=this.value.replace(/[éèêë]/g,'e').replace(/[àäâ]/g,'a').replace(/[ïî]/g,'i').replace(/[ûü]/g,'u').replace(/[öô]/g,'o')"/> 
 		<br>
@@ -38,9 +41,9 @@
 		<br>
 	</form>
 	
-	<form action="login.html">
-		<button type="submit">Retour page de connexion</button>
-	</form>
+	<div class="back">
+		<p><a class="back-link" href="login.html">Retour à la page de connexion !</a></p>
+	</div>
 
 </body>
 </html>
