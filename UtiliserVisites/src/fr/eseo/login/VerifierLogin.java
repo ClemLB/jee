@@ -81,7 +81,7 @@ public class VerifierLogin extends HttpServlet {
 				RequestDispatcher dispt = request.getRequestDispatcher("login.html");
 				dispt.forward(request, response);
 			} else {
-				RequestDispatcher dispt = request.getRequestDispatcher("menu.html");
+				RequestDispatcher dispt = request.getRequestDispatcher("menu.jsp");
 				dispt.forward(request, response);
 			}
 

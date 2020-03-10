@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,7 +7,19 @@
 <title>Réservation visites guidées</title>
 </head>
 <body>
-	<h1> Bienvenue ! </h1> <br><br>
+	<h1> 
+		Bienvenue  
+		<%  
+			out.print(" ");
+			out.print(request.getSession().getAttribute("clientPrenom")); 
+			out.print(" ");
+			out.print(request.getSession().getAttribute("clientNom")); 
+			out.print(" !");
+		%>
+	</h1> 
+	
+	<br>
+		
 	Vous souhaitez visiter nos plus belles villes de France ? <br>
 	N'attendez plus et trouvez votre séjour parfait ! <br><br>
 	
