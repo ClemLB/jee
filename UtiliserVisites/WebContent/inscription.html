@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Inscription</title>
+</head>
+
+<body>
+
+	<h1>Inscription :</h1>
+	<br>
+	<form method="post" action="CreerUtilisateur" style="text-align: center;" accept-charset="UTF-8">
+		<label for="nom"> Nom : </label> 
+		<input type="nom" id="nom" name="nom" placeholder="nom"  required 
+		onkeyup="this.value=this.value.replace(/[éèêë]/g,'e').replace(/[àäâ]/g,'a').replace(/[ïî]/g,'i').replace(/[ûü]/g,'u').replace(/[öô]/g,'o')"/> 
+		<br>
+		<br> 
+			<label for="prenom"> Prenom : </label> 
+		<input type="prenom" id="prenom" name="prenom" placeholder="prenom"  required 
+		onkeyup="this.value=this.value.replace(/[éèêë]/g,'e').replace(/[àäâ]/g,'a').replace(/[ïî]/g,'i').replace(/[ûü]/g,'u').replace(/[öô]/g,'o')"/> 
+		<br>
+		<br> 
+		
+		<label for="email"> Adresse email : </label> 
+		<input type="email" id="email" name="email" placeholder="adresse e-mail"  required 
+		onkeyup="this.value=this.value.replace(/[éèêë]/g,'e').replace(/[àäâ]/g,'a').replace(/[ïî]/g,'i').replace(/[ûü]/g,'u').replace(/[öô]/g,'o')"/> 
+		<br>
+		<br> 
+		
+		<label for="motDePasse"> Mot de Passe : </label> 
+		<input type="password" id="motDePasse" placeholder="mot de passe" name="motDePasse" required 
+		onkeyup="this.value=this.value.replace(/[éèêë]/g,'e').replace(/[àäâ]/g,'a').replace(/[ïî]/g,'i').replace(/[ûü]/g,'u').replace(/[öô]/g,'o')"/> 
+		<br>
+		<br> 
+		
+		<input type="submit" value="Valider"> <br>
+		<br>
+	</form>
+	<form action="login.html">
+		<button type="submit">Retour page de connexion</button>
+	</form>
+
+</body>
+</html>

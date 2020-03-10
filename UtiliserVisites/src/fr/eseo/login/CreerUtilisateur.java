@@ -3,7 +3,6 @@ package fr.eseo.login;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -13,13 +12,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class VerifierLogin
+ * Servlet implementation class CreerUtilisateur
  */
-@WebServlet("/VerifierLogin")
-public class VerifierLogin extends HttpServlet {
+@WebServlet("/CreerUtilisateur")
+public class CreerUtilisateur extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	static final String DB_ADRESSE = "192.168.4.197";
 	static final String DB_LOGIN = "java";
@@ -31,7 +29,7 @@ public class VerifierLogin extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public VerifierLogin() {
+	public CreerUtilisateur() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -43,9 +41,10 @@ public class VerifierLogin extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		HttpSession session = request.getSession();
 		String email = request.getParameter("email");
-		String password = request.getParameter("password");
+		String motDePasse = request.getParameter("motDePasse");
+		String nom = request.getParameter("nom");
+		String prenom = request.getParameter("prenom");
 
 		try {
 			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
@@ -55,35 +54,16 @@ public class VerifierLogin extends HttpServlet {
 
 			Statement stmt = connection.createStatement();
 
-			String sql = "Select * from ClientsVisites.Clients WHERE `email`=\"" + email + "\" and motDePasse=\""
-					+ password + "\" ";
+			String sql = "INSERT INTO ClientsVisites.Clients (prenom, nom, email, motDePasse)\n" + 
+					" VALUES (\"" + prenom + "\", \"" + nom + "\", \"" + email + "\", \"" + motDePasse + "\")";
 
-			ResultSet rset = stmt.executeQuery(sql);
+			stmt.executeUpdate(sql);
 
-			Client client = new Client();
-
-			while (rset.next()) {
-
-				client.setIdClient(Integer.valueOf(rset.getString("idClient")));
-				client.setEmail(rset.getString("email"));
-				client.setNom(rset.getString("nom"));
-				client.setPrenom(rset.getString("prenom"));
-			}
-
-			session.setAttribute("clientNom", client.getNom());
-			session.setAttribute("clientPrenom", client.getPrenom());
-			session.setAttribute("clientID", client.getIdClient());
-			rset.close();
 			stmt.close();
 			connection.close();
 
-			if (client.getIdClient() == 0) {
-				RequestDispatcher dispt = request.getRequestDispatcher("login.html");
-				dispt.forward(request, response);
-			} else {
-				RequestDispatcher dispt = request.getRequestDispatcher("menu.html");
-				dispt.forward(request, response);
-			}
+			RequestDispatcher dispt = request.getRequestDispatcher("login.html");
+			dispt.forward(request, response);
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
