@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Lun 09 Mars 2020 à 10:48
+-- Généré le :  Mar 10 Mars 2020 à 13:37
 -- Version du serveur :  5.7.25-0ubuntu0.16.04.2
 -- Version de PHP :  7.0.32-0ubuntu0.16.04.1
 
@@ -19,29 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `GestionnaireVisites`
 --
-
--- --------------------------------------------------------
-
---
--- Structure de la table `Clients`
---
-
-CREATE TABLE `Clients` (
-  `idClient` int(11) NOT NULL,
-  `nom` varchar(20) CHARACTER SET utf8 NOT NULL,
-  `prenom` varchar(20) CHARACTER SET utf8 NOT NULL,
-  `email` varchar(60) CHARACTER SET utf8 NOT NULL,
-  `motDePasse` varchar(20) CHARACTER SET utf8 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Contenu de la table `Clients`
---
-
-INSERT INTO `Clients` (`idClient`, `nom`, `prenom`, `email`, `motDePasse`) VALUES
-(1, 'X', 'toto', 'toto@jee.com', '1'),
-(2, 'Y', 'tata', 'tata@jee.com', '2'),
-(3, 'Z', 'titi', 'titi@jee.com', '3');
 
 -- --------------------------------------------------------
 
@@ -88,18 +65,12 @@ INSERT INTO `Visites` (`typeVisite`, `ville`, `dateVisite`, `prixVisite`, `idVis
 ('musee art', 'nantes', '2020-03-13', 49.99, 1, 'munantes130320'),
 ('croisiere', 'angers', '2020-04-02', 19.99, 2, 'crangers020420'),
 ('monument cathedrale', 'angers', '2020-04-04', 1.99, 3, 'moangers040420'),
-('parc', 'angers', '2020-04-04', 2.99, 4, 'paangers040420');
+('parc', 'angers', '2020-04-04', 2.99, 4, 'paangers040420'),
+('city tour', 'paris', '2020-04-09', 29.99, 788, 'ctparis090420');
 
 --
 -- Index pour les tables exportées
 --
-
---
--- Index pour la table `Clients`
---
-ALTER TABLE `Clients`
-  ADD PRIMARY KEY (`idClient`),
-  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- Index pour la table `Reservations`
@@ -122,20 +93,15 @@ ALTER TABLE `Visites`
 --
 
 --
--- AUTO_INCREMENT pour la table `Clients`
---
-ALTER TABLE `Clients`
-  MODIFY `idClient` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
 -- AUTO_INCREMENT pour la table `Reservations`
 --
 ALTER TABLE `Reservations`
-  MODIFY `idReservation` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `idReservation` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT pour la table `Visites`
 --
 ALTER TABLE `Visites`
-  MODIFY `idVisite` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=778;
+  MODIFY `idVisite` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=789;
 --
 -- Contraintes pour les tables exportées
 --
@@ -144,8 +110,7 @@ ALTER TABLE `Visites`
 -- Contraintes pour la table `Reservations`
 --
 ALTER TABLE `Reservations`
-  ADD CONSTRAINT `Reservations_ibfk_1` FOREIGN KEY (`idVisite`) REFERENCES `Visites` (`idVisite`),
-  ADD CONSTRAINT `Reservations_ibfk_2` FOREIGN KEY (`idClient`) REFERENCES `Clients` (`idClient`);
+  ADD CONSTRAINT `Reservations_ibfk_1` FOREIGN KEY (`idVisite`) REFERENCES `Visites` (`idVisite`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
