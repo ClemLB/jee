@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 body {
-	background-color: Lavender;
+	background-color: burlywood;
 }
 
 .image {
@@ -25,10 +25,28 @@ body {
 
 .inscription-link {
 	text-decoration: none;
-	color: aliceblue;
+	color: orangered;
 	transition: all 0.3s;
 }
 
 .inscription-link:hover {
 	color: lightseagreen;
+}
+
+.back {
+	text-align: center;
+}
+
+.back-link {
+	text-decoration: none;
+	color: orangered;
+	transition: all 0.3s;
+}
+
+.back-link:hover {
+	color: lightseagreen;
+}
+
+.submit-btn:hover {
+	cursor: pointer;
 }
