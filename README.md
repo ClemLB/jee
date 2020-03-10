@@ -12,6 +12,7 @@ Améliorations apportées :
 -
 - annulerVisite => rajout identifiant client pour vérifier que le client annule sa réservation
 - base de données => ajout d'un identifiant pour chaque table afin de mettre en place des clés étrangères dans Réservations
+- Ajout d'un email et d'un mot de passe pour chaque client => Pour ouvrir une session lié à un et un seul client
 
 
 Tests effectués :
@@ -31,18 +32,20 @@ Laillé Clément
   - java
   - tests
   - wsdl serveur
+  - processus pour payer une visite (servlet, jsp)
 
 Le Borgne Clément
   - java
   - tests
   - wsdl client
+  - processus pour annuler une visite (servlet, jsp)
   
 Tourneur Virgil
   - Menu et réserver, trouver, annuler, payer (html)
-  - Processus pour trouver une visite
+  - Processus pour trouver une visite (servlet, jsp)
 
 Vezin Frédéric
   - Login (html et servlet) 
-  - Processus de réservation visite
+  - Processus de réservation visite (servlet, jsp)
   - Stucture et Mise en place base de donées (+ .pdf et .sql)
   - Mise en page de ce ReadMe
