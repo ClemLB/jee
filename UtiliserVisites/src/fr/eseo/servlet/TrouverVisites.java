@@ -72,8 +72,33 @@ public class TrouverVisites extends HttpServlet {
 		SEIGestionVisites port = service.getGestionVisitesPort();
 		
 		List<Visite> listeVisite = port.trouverVisite(visite);
+		List<String> strVisites = new ArrayList<String>();
+		String resPhrase;
 		
-		session.setAttribute("resListe", listeVisite);
+		if(listeVisite.isEmpty()) {
+			resPhrase = "Pas de visites disponibles.";
+		}else {
+			/**
+			for (int i = 0; i < listeVisite.size(); i++) {
+				String strInter = "Ville : ";
+				strInter += listeVisite.get(i).getVille();
+				strInter += " | Type Visite : ";
+			    strInter += listeVisite.get(i).getTypeVisite();
+				strInter += " | Prix : ";
+			    strInter += String.valueOf(listeVisite.get(i).getPrix());
+				strInter += " | Date : ";
+			    strInter += listeVisite.get(i).getDateVisite();
+			    strInter += " | Code Visite : ";
+			    strInter += listeVisite.get(i).getCodeVisite();
+			    strVisites.add(strInter);
+			}
+			*/
+			resPhrase = "Voici les visites disponibles :";
+		}
+		
+		session.setAttribute("resPhrase", resPhrase);
+		//session.setAttribute("resListe", strVisites);
+		session.setAttribute("test", listeVisite);
 		
 		RequestDispatcher dispReq = request.getRequestDispatcher("ListeVisite.jsp");
 		dispReq.forward(request, response);
