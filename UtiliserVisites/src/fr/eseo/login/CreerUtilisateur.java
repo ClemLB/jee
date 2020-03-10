@@ -20,12 +20,12 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/CreerUtilisateur")
 public class CreerUtilisateur extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-//	static final String DB_ADRESSE = "192.168.4.197";
-//	static final String DB_LOGIN = "java";
-//	static final String DB_MDP = "network";
-	static final String DB_ADRESSE = "localhost";
-	static final String DB_LOGIN = "root";
+	static final String DB_ADRESSE = "192.168.4.197";
+	static final String DB_LOGIN = "java";
 	static final String DB_MDP = "network";
+//	static final String DB_ADRESSE = "localhost";
+//	static final String DB_LOGIN = "root";
+//	static final String DB_MDP = "network";
 
 	/**
 	 * @see HttpServlet#HttpServlet()
