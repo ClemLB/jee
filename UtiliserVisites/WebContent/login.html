@@ -2,37 +2,39 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="./css/style.css" />
+<link rel="stylesheet" type="text/css" href="./css/style.css" />
 <title>Page de connexion aux visites</title>
 </head>
 <body>
-
-	<h1>Page de Connexion à l'IVisitePlus</h1>
+	
+	<div class="main-title">
+		<p>Page de Connexion à l'<b><em>IVisitePlus</em></b></p>
+	</div>
 
 	<div class="login" >
 
-		<h2 align="center">Login</h2>
-		
 		<img src="./ressource/plant.webp" alt="Erreur de chargement de l'image" class="image"/>
 		<br>
 
 		<form action="VerifierLogin" method="post" style="text-align: center;">
-
-			<input type="email" placeholder="adresse e-mail" id="email" name="email"> 
+			
+			<label for="email">E-mail :</label>
+			<input type="email" placeholder="e-mail" id="email" name="email"> 
 			<br> 
 			
+			<label for="password">Mot de passe :</label>
 			<input type="password"
 				placeholder="mot de passe" id="password" name="password"> <br>
 
-			<input type="submit" value="connect" name="connect">
+			<input type="submit" value="Connexion" name="connect">
 
 		</form>
 
 		<br> <br> <br>
-
-		<form action="inscription.html">
-			<button type="submit">S'incrire</button>
-		</form>
+		
+		<div class="inscription">
+			<p>Vous ne possédez pas encore de compte ? <a href="inscription.html">Inscrivez-vous ici !</a></p>
+		</div>
 
 	</div>
 
