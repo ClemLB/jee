@@ -11,12 +11,14 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.mysql.cj.jdbc.Driver;
+
 public class TestPayerVisite {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		try {
-			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+			DriverManager.registerDriver(new Driver());
 			Connection conn = DriverManager.getConnection("jdbc:mysql://" + AllTests.DB_ADRESSE
 					+ "/GestionnaireVisites?user=" + AllTests.USERNAME + "&password=" + AllTests.PASSWORD);
 
@@ -49,7 +51,7 @@ public class TestPayerVisite {
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
 		try {
-			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+			DriverManager.registerDriver(new Driver());
 			Connection conn = DriverManager.getConnection("jdbc:mysql://" + AllTests.DB_ADRESSE
 					+ "/GestionnaireVisites?user=" + AllTests.USERNAME + "&password=" + AllTests.PASSWORD);
 
@@ -84,7 +86,7 @@ public class TestPayerVisite {
 		GestionVisites gv = new GestionVisites();
 		String answer = gv.payerVisite("test1");
 		try {
-			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+			DriverManager.registerDriver(new Driver());
 			Connection conn = DriverManager.getConnection("jdbc:mysql://" + AllTests.DB_ADRESSE
 					+ "/GestionnaireVisites?user=" + AllTests.USERNAME + "&password=" + AllTests.PASSWORD);
 
@@ -117,7 +119,7 @@ public class TestPayerVisite {
 		String answer = gv.payerVisite("test2");
 
 		try {
-			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+			DriverManager.registerDriver(new Driver());
 			Connection conn = DriverManager.getConnection("jdbc:mysql://" + AllTests.DB_ADRESSE
 					+ "/GestionnaireVisites?user=" + AllTests.USERNAME + "&password=" + AllTests.PASSWORD);
 

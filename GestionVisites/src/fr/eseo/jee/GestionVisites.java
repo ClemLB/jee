@@ -191,7 +191,7 @@ public class GestionVisites implements SEIGestionVisites {
 	public String reserverVisite(ReservationVisite uneReservation) {
 		// Connexion à la base de données
 		try {
-			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+			DriverManager.registerDriver(new Driver());
 			Connection conn = DriverManager.getConnection(
 					"jdbc:mysql://" + DB_ADRESSE + "/GestionnaireVisites?user=" + USERNAME + "&password=" + PASSWORD);
 
@@ -258,7 +258,7 @@ public class GestionVisites implements SEIGestionVisites {
 	public String payerVisite(String codeReservation) {
 		// Connexion à la base de données
 		try {
-			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+			DriverManager.registerDriver(new Driver());
 			Connection conn = DriverManager.getConnection(
 					"jdbc:mysql://" + DB_ADRESSE + "/GestionnaireVisites?user=" + USERNAME + "&password=" + PASSWORD);
 
@@ -291,7 +291,7 @@ public class GestionVisites implements SEIGestionVisites {
 	public boolean annulerVisite(String codeReservation, int idClient) {
 		// Connexion à la base de données
 		try {
-			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+			DriverManager.registerDriver(new Driver());
 			Connection conn = DriverManager.getConnection(
 					"jdbc:mysql://" + DB_ADRESSE + "/GestionnaireVisites?user=" + USERNAME + "&password=" + PASSWORD);
 
@@ -326,7 +326,7 @@ public class GestionVisites implements SEIGestionVisites {
 	private int getIdFromCode(String codeVisite) {
 		// Connexion à la base de données
 		try {
-			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+			DriverManager.registerDriver(new Driver());
 			Connection conn = DriverManager.getConnection(
 					"jdbc:mysql://" + DB_ADRESSE + "/GestionnaireVisites?user=" + USERNAME + "&password=" + PASSWORD);
 
@@ -386,7 +386,7 @@ public class GestionVisites implements SEIGestionVisites {
 	private boolean checkIfExist(String codeVisite) {
 		// Connexion à la base de données
 		try {
-			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+			DriverManager.registerDriver(new Driver());
 			Connection conn = DriverManager.getConnection(
 					"jdbc:mysql://" + DB_ADRESSE + "/GestionnaireVisites?user=" + USERNAME + "&password=" + PASSWORD);
 

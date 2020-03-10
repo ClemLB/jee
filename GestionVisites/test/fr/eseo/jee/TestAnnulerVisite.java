@@ -99,7 +99,7 @@ public class TestAnnulerVisite {
 		boolean answer = gv.annulerVisite("test1", 1);
 
 		try {
-			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+			DriverManager.registerDriver(new Driver());
 			Connection conn = DriverManager.getConnection("jdbc:mysql://" + AllTests.DB_ADRESSE
 					+ "/GestionnaireVisites?user=" + AllTests.USERNAME + "&password=" + AllTests.PASSWORD);
 
@@ -131,7 +131,7 @@ public class TestAnnulerVisite {
 		boolean answer = gv.annulerVisite("test2", 1);
 
 		try {
-			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+			DriverManager.registerDriver(new Driver());
 			Connection conn = DriverManager.getConnection("jdbc:mysql://" + AllTests.DB_ADRESSE
 					+ "/GestionnaireVisites?user=" + AllTests.USERNAME + "&password=" + AllTests.PASSWORD);
 
@@ -163,7 +163,7 @@ public class TestAnnulerVisite {
 		boolean answer = gv.annulerVisite("test3", 1);
 
 		try {
-			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+			DriverManager.registerDriver(new Driver());
 			Connection conn = DriverManager.getConnection("jdbc:mysql://" + AllTests.DB_ADRESSE
 					+ "/GestionnaireVisites?user=" + AllTests.USERNAME + "&password=" + AllTests.PASSWORD);
 
