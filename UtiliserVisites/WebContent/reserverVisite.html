@@ -8,7 +8,7 @@
 	<h1> Faites votre réservation : </h1> <br><br>
 	<form method="post" action="ReserverVisite">
 		<label for="codeVis"> Code de la viste : </label>
-		<input type="text" id="codeVis" name="codeVis" required/> <br><br>
+		<input type="text" id="codeVis" name="codeVis" placeholder="Code de Visite" required/> <br><br>
 		
 		<label for="nbrClient"> Nombre Client : </label>
 		<input type="number" id="nbrClient" name="nbrClient" min="1" value="1"/> <br><br>
@@ -18,5 +18,19 @@
 	<form action="menu.jsp">
 		<button type="submit"> Retour </button>
 	</form>
+	
+	<script type="text/javascript">
+	
+	var url = new URL(window.location.href);
+	var search_params = new URLSearchParams(url.search);
+	
+	//Permet de rechercher la valeur du codeVisite en paramètre dans l'URL si il existe
+	if(search_params.has('codeVisite')) {
+	  var codeVisite = search_params.get('codeVisite');
+	  console.log(codeVisite);
+	  document.getElementById("codeVis").value = codeVisite;
+	}
+	
+	</script>
 </body>
 </html>
