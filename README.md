@@ -19,7 +19,7 @@ Améliorations apportées :
 Tests effectués :
 -
   - reserverVisite
-    ° réserver une visite existante
+    -réserver une visite existante
     ° ne pas pouvoir réserver une visite n'existant pas
   - payerVisite
     ° payer une réservation existante
