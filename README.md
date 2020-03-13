@@ -10,7 +10,8 @@ Outils utilisés :
 
 Améliorations apportées :
 -
-- annulerVisite => rajout d'un identifiant client en paramètre pour vérifier que le client annule sa réservation et pas celle d'un autre
+- annulerVisite :
+- rajout d'un identifiant client en paramètre pour vérifier que le client annule sa réservation et pas celle d'un autre
 - base de données => ajout d'un identifiant pour chaque table afin de mettre en place des clés étrangères dans Réservations
 - Création de compte => inscription en renseignant un nom, un prénom, une adresse mail et un mot de passe
 - Ajout d'un email et d'un mot de passe pour chaque client => Pour ouvrir une session lié à un et un seul client
