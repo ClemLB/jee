@@ -28,7 +28,7 @@
 		<button type="submit"> Trouver une visite</button> <br><br>
 	</form>
 	
-	<form action="TrouverTaxis">
+	<form action="trouverTaxi.html">
 		<button type="submit"> Trouver un taxi</button> <br><br>
 	</form>
 	

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="./css/style.css" />
+<title>Trouver une visite</title>
+</head>
+<body style ="text-align:center;">
+	<h1> Trouver votre taxi : </h1> <br><br>
+
+	<form method="post" action="TrouverTaxis">
+	<label for="ville"> Ville : </label>
+		<SELECT name="ville" id="ville" size="1">
+		<OPTION value="">Choisir
+		<OPTION value="angers">Angers
+		<OPTION value="nantes">Nantes
+		<OPTION value="paris">Paris
+		</SELECT>
+	
+	<br>
+	
+	<label for="date"> Date de la visite : </label>
+	<input type="date" id="date" name="date"/>
+	
+	<br><br>
+	
+	<input type="submit" value="Chercher">
+	</form>
+	
+	<br>
+	
+	<form action="menu.jsp">
+		<button type="submit"> Retour Menu</button>
+	</form>
+</body>
+
+	<script type="text/javascript">
+	
+	 var dateDuJour = new Date();
+
+	 var dateDuJourStr = dateDuJour.getFullYear().toString();
+	 
+	 if((dateDuJour.getMonth()+1) < 10){
+		 dateDuJourStr += "-0" + (dateDuJour.getMonth()+1).toString() + "-" + dateDuJour.getDate().toString();
+	 }else{
+		 dateDuJourStr += "-" + (dateDuJour.getMonth()+1).toString() + "-" + dateDuJour.getDate().toString();
+	 }
+	 
+	 document.getElementById("dateVisite").min = dateDuJourStr;
+	</script>
+	
+</html>
