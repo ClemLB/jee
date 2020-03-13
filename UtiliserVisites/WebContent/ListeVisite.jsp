@@ -14,7 +14,7 @@
 	</h1>
 	
 	<% 
-	ArrayList<Visite> list = (ArrayList<Visite>) request.getSession().getAttribute("test");
+	ArrayList<Visite> list = (ArrayList<Visite>) request.getSession().getAttribute("listeVisite");
 	if(!list.isEmpty()) {
 		Visite villeTest = new Visite();
 

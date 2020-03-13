@@ -25,19 +25,23 @@
 	N'attendez plus et trouvez votre séjour parfait ! <br><br>
 	
 	<form action="trouverVisite.html">
-		<button type="submit"> Trouver </button> <br><br>
+		<button type="submit"> Trouver une visite</button> <br><br>
+	</form>
+	
+	<form action="TrouverTaxis">
+		<button type="submit"> Trouver un taxi</button> <br><br>
+	</form>
+	
+	<form action="reserverVisite.html">
+		<button type="submit"> Réserver une visite</button> <br><br>
 	</form>
 	
 	<form action="payerVisite.html">
-		<button type="submit"> Payer </button> <br><br>
-	</form>
-
-	<form action="reserverVisite.html">
-		<button type="submit"> Réserver </button> <br><br>
+		<button type="submit"> Payer une visite</button> <br><br>
 	</form>
 	
 	<form action="annulerVisite.html">		
-		<button type="submit"> Annuler </button> <br><br>
+		<button type="submit"> Annuler une visite</button> <br><br>
 	</form>
 	
 	<form action="login.html">
