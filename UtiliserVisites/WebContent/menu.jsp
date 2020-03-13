@@ -24,7 +24,7 @@
 	Vous souhaitez visiter nos plus belles villes de France ? <br>
 	N'attendez plus et trouvez votre séjour parfait ! <br><br>
 	
-	<form action="trouverVisite.html">
+	<form action="TrouverVisite.jsp">
 		<button type="submit"> Trouver une visite</button> <br><br>
 	</form>
 	
