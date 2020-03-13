@@ -41,6 +41,9 @@ Tests effectués :
   - trouver une visite existante grâce au prix
   - trouver une visite existante grâce à son code
 
+Connexion à un autre groupe (Taxi) :
+-
+Nous offrons la possibilité de trouver un ou plusieurs taxis disponibles pour une date donnée en échange de quoi l'autre groupe pourra trouver les visites disponibles pour différentes conditions.
 
 Travail effectué :
 -
