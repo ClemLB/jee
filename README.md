@@ -58,13 +58,16 @@ Le Borgne Clément :
   - tests (AllTests, trouverVisite et reserverVisite)
   - wsdl client
   - processus pour annuler une visite (servlet, jsp)
+  - Complétion de ce ReadMe
   
 Tourneur Virgil :
   - Menu et réserver, trouver, annuler, payer (html)
   - Processus pour trouver une visite (servlet, jsp)
+  - Mise en forme du CSS des pages web
+  - Debug côté client
 
 Vezin Frédéric :
   - Login (html et servlet) 
   - Processus de réservation visite (servlet, jsp)
   - Stucture et Mise en place base de donées (+ .pdf et .sql)
-  - Mise en page de ce ReadMe
+  - Début de complétion et mise en page de ce ReadMe
