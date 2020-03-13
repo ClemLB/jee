@@ -1,4 +1,4 @@
-# Visites par Clément Le Borgne, Clément Laillé, Frédéric Vezin, Virgil Tourneur
+# Visites par Virgil Tourneur, Clément Laillé, Frédéric Vezin, Clément Le Borgne
 
 Outils utilisés : 
 -
