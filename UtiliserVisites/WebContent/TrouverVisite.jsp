@@ -23,7 +23,10 @@
 	Connection connection = DriverManager.getConnection("jdbc:mysql://192.168.4.197/GestionnaireVisites","java","network");
 
     Statement statement = connection.createStatement();
-    ResultSet resultSet = statement.getResultSet();
+    
+    String sql = "Select * from Visites";
+
+	ResultSet resultSet = statement.executeQuery(sql);
 	%>
 	<SELECT name="nomVille" id="nomVille" size="1">
         <OPTION value="">Choisir
