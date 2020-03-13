@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import fr.eseo.jee.GestionVisitesService;
-import fr.eseo.jee.SEIGestionVisites;
+import fr.eseo.jee.visite.GestionVisitesService;
+import fr.eseo.jee.visite.SEIGestionVisites;
 
 /**
  * Servlet implementation class AnnulerVisite

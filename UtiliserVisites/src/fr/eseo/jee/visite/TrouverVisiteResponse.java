@@ -1,5 +1,5 @@
 
-package fr.eseo.jee;
+package fr.eseo.jee.visite;
 
 import java.util.ArrayList;
 import java.util.List;

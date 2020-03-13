@@ -11,10 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import fr.eseo.jee.GestionVisitesService;
-import fr.eseo.jee.ReservationVisite;
-import fr.eseo.jee.SEIGestionVisites;
-import fr.eseo.jee.Visite;
+import fr.eseo.jee.visite.GestionVisitesService;
+import fr.eseo.jee.visite.ReservationVisite;
+import fr.eseo.jee.visite.SEIGestionVisites;
+import fr.eseo.jee.visite.Visite;
 
 /**
  * Servlet implementation class ReserverVisite

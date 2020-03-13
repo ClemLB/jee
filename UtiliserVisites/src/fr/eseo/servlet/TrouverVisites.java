@@ -1,8 +1,6 @@
 package fr.eseo.servlet;
 
 import java.io.IOException;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,9 +14,9 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.StringUtils;
 
-import fr.eseo.jee.GestionVisitesService;
-import fr.eseo.jee.SEIGestionVisites;
-import fr.eseo.jee.Visite;
+import fr.eseo.jee.visite.GestionVisitesService;
+import fr.eseo.jee.visite.SEIGestionVisites;
+import fr.eseo.jee.visite.Visite;
 
 /**
  * Servlet implementation class TrouverVisites

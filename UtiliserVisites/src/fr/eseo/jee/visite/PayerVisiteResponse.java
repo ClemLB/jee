@@ -1,5 +1,5 @@
 
-package fr.eseo.jee;
+package fr.eseo.jee.visite;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -8,12 +8,12 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java pour reserverVisiteResponse complex type.
+ * <p>Classe Java pour payerVisiteResponse complex type.
  * 
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
- * &lt;complexType name="reserverVisiteResponse"&gt;
+ * &lt;complexType name="payerVisiteResponse"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
@@ -27,10 +27,10 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "reserverVisiteResponse", propOrder = {
+@XmlType(name = "payerVisiteResponse", propOrder = {
     "_return"
 })
-public class ReserverVisiteResponse {
+public class PayerVisiteResponse {
 
     @XmlElement(name = "return")
     protected String _return;
