@@ -30,7 +30,7 @@
 			out.print(String.valueOf(villeTest.getPrix()));
 			out.print(" | Code : ");
 			out.print(villeTest.getCodeVisite());
-			out.write(" | </spanp>");
+			out.write(" | </span>");
 			
 			out.write("<a href=\"reserverVisite.html?codeVisite=" + villeTest.getCodeVisite() + "\">");
 			out.print("Réserver cette visite");
