@@ -47,27 +47,28 @@ Nous offrons la possibilité de trouver un ou plusieurs taxis disponibles pour u
 
 Travail effectué :
 -
-Laillé Clément :
+- Laillé Clément :
   - java (classe Réservation et méthodes annulerVisite, payerVisite, reserverVisite)
   - tests (annulerVisite et payerVisite)
   - wsdl serveur
   - processus pour payer une visite (servlet, jsp)
 
-Le Borgne Clément :
+- Le Borgne Clément :
   - java (classe Visite et méthode trouverVisites)
   - tests (AllTests, trouverVisite et reserverVisite)
   - wsdl client
   - processus pour annuler une visite (servlet, jsp)
   - Complétion de ce ReadMe
   
-Tourneur Virgil :
+- Tourneur Virgil :
   - Menu et réserver, trouver, annuler, payer (html)
   - Processus pour trouver une visite (servlet, jsp)
   - Mise en forme du CSS des pages web
   - Debug côté client
 
-Vezin Frédéric :
-  - Login (html et servlet) 
+- Vezin Frédéric :
+  - Login (html et servlet)
   - Processus de réservation visite (servlet, jsp)
-  - Stucture et Mise en place base de donées (+ .pdf et .sql)
+  - Complétion automatique du champ 'codeVisite' lors d'une réservation depuis la liste des visites
+  - Stucture et Mise en place base de données (+ .pdf et .sql)
   - Début de complétion et mise en page de ce ReadMe
