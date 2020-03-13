@@ -5,10 +5,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="./css/style.css" />
 <title>Liste des visites</title>
 </head>
 <body>
+	<h1>
 	<%= request.getSession().getAttribute("resPhrase") %> <br><br>
+	</h1>
 	
 	<% 
 	ArrayList<Visite> list = (ArrayList<Visite>) request.getSession().getAttribute("test");
