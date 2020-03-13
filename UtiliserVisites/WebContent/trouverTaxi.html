@@ -9,22 +9,25 @@
 	<h1> Trouver votre taxi : </h1> <br><br>
 
 	<form method="post" action="TrouverTaxis">
-	<label for="ville"> Ville : </label>
-		<SELECT name="ville" id="ville" size="1">
-		<OPTION value="">Choisir
-		<OPTION value="angers">Angers
-		<OPTION value="nantes">Nantes
-		<OPTION value="paris">Paris
-		</SELECT>
-	
-	<br>
-	
-	<label for="date"> Date de la visite : </label>
-	<input type="date" id="date" name="date"/>
-	
-	<br><br>
-	
-	<input type="submit" value="Chercher">
+		<label for="ville"> Ville : </label>
+		<select name="ville" id="ville" size="1">
+		<OPTION value="Angers">Angers
+		<OPTION value="Nantes">Nantes
+		<OPTION value="Paris">Paris
+		</select>
+		
+		<label for="categorie"> Type : </label>
+		<select name="categorie" id="categorie" size="1">
+		<OPTION value="voiture">Voiture
+		<OPTION value="minibus">Mini-bus
+		</select>
+		
+		<label for="date"> Date de la visite : </label>
+		<input type="date" id="date" name="date"/>
+		
+		<br><br>
+		
+		<input type="submit" value="Chercher">
 	</form>
 	
 	<br>
@@ -46,7 +49,7 @@
 		 dateDuJourStr += "-" + (dateDuJour.getMonth()+1).toString() + "-" + dateDuJour.getDate().toString();
 	 }
 	 
-	 document.getElementById("dateVisite").min = dateDuJourStr;
+	 document.getElementById("date").min = dateDuJourStr;
 	</script>
 	
 </html>
