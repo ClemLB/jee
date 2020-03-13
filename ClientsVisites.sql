@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Lun 09 Mars 2020 à 10:12
+-- Généré le :  Ven 13 Mars 2020 à 16:30
 -- Version du serveur :  5.7.25-0ubuntu0.16.04.2
 -- Version de PHP :  7.0.32-0ubuntu0.16.04.1
 
@@ -39,9 +39,10 @@ CREATE TABLE `Clients` (
 --
 
 INSERT INTO `Clients` (`idClient`, `nom`, `prenom`, `email`, `motDePasse`) VALUES
-(1, 'X', 'toto', 'toto@jee.com', '1'),
-(2, 'Y', 'tata', 'tata@jee.com', '2'),
-(3, 'Z', 'titi', 'titi@jee.com', '3');
+(1, 'JEE', 'test', 'test@jee.com', '1'),
+(2, 'Laille', 'Clement', 'clement.laille@reseau.eseo.fr', '12345'),
+(3, 'Le Borgne', 'Clement', 'clement.leborgne@reseau.eseo.fr', '123'),
+(4, 'Vezin', 'Frederic', 'frederic.vezin@reseau.eseo.fr', 'tototiti');
 
 --
 -- Index pour les tables exportées
@@ -62,7 +63,7 @@ ALTER TABLE `Clients`
 -- AUTO_INCREMENT pour la table `Clients`
 --
 ALTER TABLE `Clients`
-  MODIFY `idClient` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idClient` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

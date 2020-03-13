@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Mar 10 Mars 2020 à 13:37
+-- Généré le :  Ven 13 Mars 2020 à 16:29
 -- Version du serveur :  5.7.25-0ubuntu0.16.04.2
 -- Version de PHP :  7.0.32-0ubuntu0.16.04.1
 
@@ -40,7 +40,8 @@ CREATE TABLE `Reservations` (
 --
 
 INSERT INTO `Reservations` (`idVisite`, `idClient`, `nombreplaces`, `booleenPaiementEffectue`, `idReservation`, `codeReservation`) VALUES
-(4, 1, 1, 0, 10, 'SWwNJUa');
+(10, 1, 5, 0, 2, 'JsrZmwh'),
+(2, 1, 1, 1, 3, 'gQcUecl');
 
 -- --------------------------------------------------------
 
@@ -62,11 +63,16 @@ CREATE TABLE `Visites` (
 --
 
 INSERT INTO `Visites` (`typeVisite`, `ville`, `dateVisite`, `prixVisite`, `idVisite`, `codeVisite`) VALUES
-('musee art', 'nantes', '2020-03-13', 49.99, 1, 'munantes130320'),
-('croisiere', 'angers', '2020-04-02', 19.99, 2, 'crangers020420'),
-('monument cathedrale', 'angers', '2020-04-04', 1.99, 3, 'moangers040420'),
-('parc', 'angers', '2020-04-04', 2.99, 4, 'paangers040420'),
-('city tour', 'paris', '2020-04-09', 29.99, 788, 'ctparis090420');
+('musee art', 'Nantes', '2020-03-13', 49.99, 1, 'munantes13032020'),
+('croisiere', 'Angers', '2020-04-02', 19.99, 2, 'crangers02042020'),
+('monument cathedrale', 'Angers', '2020-04-04', 1.99, 3, 'moangers04042020'),
+('parc', 'Angers', '2020-04-04', 2.99, 4, 'paangers04042020'),
+('city tour', 'Paris', '2020-04-09', 29.99, 5, 'ctparis09042020'),
+('gastronomie', 'Strasbourg', '2020-03-31', 34.99, 6, 'gastrasbourg31032020'),
+('catacombe', 'Paris', '2020-05-27', 14.99, 7, 'caparis27052020'),
+('spatial', 'CVFC-02', '3042-02-28', 149.99, 8, 'spcvfc28023042'),
+('cybercore', 'The Grid', '3000-04-30', 49.99, 9, 'cythegrid30043000'),
+('World Trade Center', 'New York', '2021-06-08', 17.53, 10, 'WTCnewyork08062021');
 
 --
 -- Index pour les tables exportées
@@ -96,12 +102,12 @@ ALTER TABLE `Visites`
 -- AUTO_INCREMENT pour la table `Reservations`
 --
 ALTER TABLE `Reservations`
-  MODIFY `idReservation` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idReservation` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT pour la table `Visites`
 --
 ALTER TABLE `Visites`
-  MODIFY `idVisite` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=789;
+  MODIFY `idVisite` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- Contraintes pour les tables exportées
 --
