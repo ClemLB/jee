@@ -4,7 +4,7 @@ Outils utilisés :
 -
 - Git pour travailler en simultané sur le même dossier projet.
 - phpMyAdmin pour implémenter puis gérer la base de données
-- eclipse : pour coder nos servlets,.jsp, .html, classes java et tests JUnit
+- eclipse : pour coder nos servlets, .jsp, .html, classes java et tests JUnit
 - Apache Tomcat 9.0
 
 
