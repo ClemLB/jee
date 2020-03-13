@@ -25,11 +25,11 @@ public class TestTrouverVisites {
 
 			// Création d'un visite de test
 			Statement stmt = conn.createStatement();
-			String query = "INSERT INTO Visites(typeVisite, ville, dateVisite, prixVisite, codeVisite) VALUES ('test', 'angersTest', '2020-03-25', '29.99', 'teangers250320')";
+			String query = "INSERT INTO Visites(typeVisite, ville, dateVisite, prixVisite, codeVisite) VALUES ('test', 'angersTest', '3020-03-25', '42.69', 'teangers250320')";
 			stmt.executeUpdate(query);
 
 			// Création d'une visite de test
-			query = "INSERT INTO Visites(typeVisite, ville, dateVisite, prixVisite, codeVisite) VALUES ('test2', 'angersTest', '2020-03-26', '39.99', 'teangers260320')";
+			query = "INSERT INTO Visites(typeVisite, ville, dateVisite, prixVisite, codeVisite) VALUES ('test2', 'angersTest', '3020-03-26', '39.99', 'teangers260320')";
 			stmt.executeUpdate(query);
 
 			stmt.close();
@@ -88,7 +88,7 @@ public class TestTrouverVisites {
 	@Test
 	public void testTrouverVisiteExiste2Villes() {
 		Visite visiteTest = new Visite();
-		visiteTest.setVille("angers");
+		visiteTest.setVille("angersTest");
 		GestionVisites gestion = new GestionVisites();
 		List<Visite> listeVisites = gestion.trouverVisite(visiteTest);
 
@@ -102,24 +102,24 @@ public class TestTrouverVisites {
 	@Test
 	public void testTrouverVisiteExisteDate() {
 		Visite visiteTest = new Visite();
-		visiteTest.setDateVisite("2020-03-25");
+		visiteTest.setDateVisite("3020-03-25");
 		GestionVisites gestion = new GestionVisites();
 		List<Visite> listeVisites = gestion.trouverVisite(visiteTest);
 
 		Assert.assertEquals("Il y a une visite", 1, listeVisites.size());
-		Assert.assertEquals("Il y a une visite à la date '2020-03-25'", "2020-03-25",
+		Assert.assertEquals("Il y a une visite à la date '3020-03-25'", "3020-03-25",
 				listeVisites.get(0).getDateVisite());
 	}
 
 	@Test
 	public void testTrouverVisiteExistePrix() {
 		Visite visiteTest = new Visite();
-		visiteTest.setPrix(29.99);
+		visiteTest.setPrix(42.69);
 		GestionVisites gestion = new GestionVisites();
 		List<Visite> listeVisites = gestion.trouverVisite(visiteTest);
 
 		Assert.assertEquals("Il y a une visite", 1, listeVisites.size());
-		Assert.assertEquals("Il y a une visite au prix '29.99'", 29.99, listeVisites.get(0).getPrix(), 0);
+		Assert.assertEquals("Il y a une visite au prix '42.69'", 42.69, listeVisites.get(0).getPrix(), 0);
 	}
 
 	@Test

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import fr.eseo.jee.GestionVisitesService;
+import fr.eseo.jee.visite.GestionVisitesService;
 
 /**
  * Servlet implementation class PayerVisite

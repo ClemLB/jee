@@ -1,14 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="fr.eseo.jee.Visite" import="fr.eseo.servlet.TrouverVisites" import="java.util.ArrayList" 
+    pageEncoding="UTF-8" import="fr.eseo.jee.visite.Visite" import="fr.eseo.servlet.TrouverVisites" import="java.util.ArrayList" 
     import="java.util.List" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="./css/style.css" />
 <title>Liste des visites</title>
 </head>
 <body>
+	<h1>
 	<%= request.getSession().getAttribute("resPhrase") %> <br><br>
+	</h1>
 	
 	<% 
 	ArrayList<Visite> list = (ArrayList<Visite>) request.getSession().getAttribute("test");
