@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 body {
-	background-color: burlywood;
+	background-color: PowderBlue;
 }
 
 .image {
@@ -18,7 +18,7 @@ body {
 
 
 .main-title {
-	font-size: 32px;
+	font-size: 38px;
 	text-align: center;
 	margin : 27px 0 50px 0;
 }
@@ -43,7 +43,7 @@ body {
 
 .back-link {
 	text-decoration: none;
-	color: orangered;
+	color: RoyalBlue;
 	transition: all 0.3s;
 }
 
