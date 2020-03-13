@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -42,7 +43,6 @@ public class GestionVisites implements SEIGestionVisites {
 		param.add(ville);
 		param.add(dateVisite);
 		param.add(prix);
-		System.out.println(param);
 		int nonNull = 0;
 		for (String s : param) {
 			if (s == null || s.equals("0.0")) {
@@ -162,6 +162,7 @@ public class GestionVisites implements SEIGestionVisites {
 			Statement stmt = con.createStatement();
 			stmt.executeQuery(sql);
 			ResultSet rs = stmt.getResultSet();
+			LocalDate today = LocalDate.now();
 			Visite visite;
 			while (rs.next()) {
 				visite = new Visite();
@@ -170,7 +171,9 @@ public class GestionVisites implements SEIGestionVisites {
 				visite.setVille((rs.getString("Ville")));
 				visite.setDateVisite((rs.getString("dateVisite")));
 				visite.setPrix(rs.getDouble("prixVisite"));
-				visites.add(visite);
+				if (LocalDate.parse(visite.getDateVisite()).isAfter(today)) {
+					visites.add(visite);
+				}
 			}
 			rs.close();
 			stmt.close();
