@@ -65,6 +65,7 @@ Travail effectué :
   - Processus pour trouver une visite (servlet, jsp)
   - Mise en forme du CSS des pages web
   - Debug côté client
+  - Affichage dynamique des villes, des types de visite et des prix en fonction de la base de données lors de la recherche d'une visite
 
 - Vezin Frédéric :
   - Login (html et servlet)
