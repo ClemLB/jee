@@ -12,6 +12,10 @@ body {
     width: auto
 }
 
+.visitFinder {
+	margin-bottom: 0
+}
+
 
 .main-title {
 	font-size: 32px;

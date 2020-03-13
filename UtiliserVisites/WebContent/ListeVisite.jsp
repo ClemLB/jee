@@ -18,9 +18,9 @@
 		for(int i = 0; i < list.size(); i++) {
 			villeTest = list.get(i);
 			
-			out.write("<p>");
+			out.write("<span class=\"visitFinder\">");
 			out.println("Visite :");
-			out.println("Ville : ");
+			out.print("Ville : ");
 			out.print(villeTest.getVille());
 			out.print(" | Type : ");
 			out.print(villeTest.getTypeVisite());
@@ -30,7 +30,12 @@
 			out.print(String.valueOf(villeTest.getPrix()));
 			out.print(" | Code : ");
 			out.print(villeTest.getCodeVisite());
-			out.write("</p>");
+			out.write(" | </spanp>");
+			
+			out.write("<a href=\"reserverVisite.html?codeVisite=" + villeTest.getCodeVisite() + "\">");
+			out.print("Réserver cette visite");
+			out.write("</a>");
+			out.write("<br><br>");
 		}
 	}
 	%>
