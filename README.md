@@ -67,7 +67,8 @@ Travail effectué :
   - Debug côté client
 
 - Vezin Frédéric :
-  - Login (html et servlet) 
+  - Login (html et servlet)
   - Processus de réservation visite (servlet, jsp)
-  - Stucture et Mise en place base de donées (+ .pdf et .sql)
+  - Complétion automatique du champ 'codeVisite' lors d'une réservation depuis la liste des visites
+  - Stucture et Mise en place base de données (+ .pdf et .sql)
   - Début de complétion et mise en page de ce ReadMe
