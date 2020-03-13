@@ -59,7 +59,7 @@
 	<br>
 	
 	<form action="menu.jsp">
-		<button type="submit"> Retour </button>
+		<button type="submit"> Retour Menu</button>
 	</form>
 </body>
 
@@ -74,8 +74,6 @@
 	 }else{
 		 dateDuJourStr += "-" + (dateDuJour.getMonth()+1).toString() + "-" + dateDuJour.getDate().toString();
 	 }
-	 
-	 console.log(dateDuJourStr);
 	 
 	 document.getElementById("dateVisite").min = dateDuJourStr;
 	</script>
