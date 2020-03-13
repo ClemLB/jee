@@ -103,4 +103,19 @@
 	</form>
 
 </body>
+
+	<script type="text/javascript">
+	
+	 var dateDuJour = new Date();
+
+	 var dateDuJourStr = dateDuJour.getFullYear().toString();
+	 
+	 if((dateDuJour.getMonth()+1) < 10){
+		 dateDuJourStr += "-0" + (dateDuJour.getMonth()+1).toString() + "-" + dateDuJour.getDate().toString();
+	 }else{
+		 dateDuJourStr += "-" + (dateDuJour.getMonth()+1).toString() + "-" + dateDuJour.getDate().toString();
+	 }
+	 
+	 document.getElementById("dateVisite").min = dateDuJourStr;
+	</script>
 </html>
