@@ -1,8 +1,0 @@
-	public static final String FICHIER_PROPERTIES = "fr/eseo/ld/dao/dao.properties";
-	public static final String FICHIER_PROPERTIES_NOM = "dao.properties";
-	public static final String FICHIER_DEFAULT_PROPERTIES = "fr/eseo/ld/dao/daoDefault.properties";
-	private static final String FICHIER_PROPERTIES_INTROUVABLE = "Le fichier properties %s est introuvable.";
-	public static final String PROPERTY_URL = "URL";
-	public static final String PROPERTY_DRIVER = "DRIVER";
-	public static final String PROPERTY_NOM_UTILISATEUR = "UTILISATEUR";
-	public static final String PROPERTY_MOT_DE_PASSE = "MOT_DE_PASSE";
