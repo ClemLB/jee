@@ -34,6 +34,8 @@ Améliorations apportées :
   - Pour ouvrir une session lié à un et un seul client
 
 
+
+
 Tests effectués :
 -
 - reserverVisite :
