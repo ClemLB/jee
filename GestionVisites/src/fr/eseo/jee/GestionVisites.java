@@ -18,8 +18,8 @@ import com.mysql.cj.jdbc.Driver;
 @WebService(targetNamespace = "http://jee.eseo.fr/", endpointInterface = "fr.eseo.jee.SEIGestionVisites", portName = "GestionVisitesPort", serviceName = "GestionVisitesService")
 public class GestionVisites implements SEIGestionVisites {
 
-	private static final String DB_ADRESSE = "192.168.4.197";
-	private static final String USERNAME = "java";
+	private static final String DB_ADRESSE = "localhost";
+	private static final String USERNAME = "root";
 	private static final String PASSWORD = "network";
 
 	/**
