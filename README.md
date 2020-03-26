@@ -57,8 +57,10 @@ Tests effectués :
 
 Connexion à un autre groupe (Taxi) :
 -
-Nous offrons la possibilité de trouver un ou plusieurs taxis disponibles pour une date donnée en échange de quoi l'autre groupe pourra trouver les visites disponibles pour différentes conditions. Nous avons ouvert le port mysql, sur la machine hôte, pour tout le monde sinon la connection à la base de donées était refusée.
-Nous ne pouvions pas accéder à la base de données des Taxis (ils n'avaient pas ouvert ce port) mais l'autre groupe a pu utilisé nos fonctions pour nos Visites sans problème.
+- Nous offrons la possibilité de trouver un ou plusieurs taxis disponibles pour une date donnée en échange de quoi l'autre groupe pourra trouver les visites disponibles pour différentes conditions. 
+
+- Nous avons ouvert le port mysql, sur la machine hôte, pour tout le monde sinon la connection à la base de donées était refusée.
+Nous ne pouvons pas accéder à la base de données des Taxis (ils n'avaient pas ouvert ce port) mais l'autre groupe a pu utilisé nos fonctions pour nos Visites sans problème.
 
 Travail effectué :
 -
