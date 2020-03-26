@@ -1,11 +1,25 @@
 # Visites par Virgil Tourneur, Clément Laillé, Frédéric Vezin, Clément Le Borgne
 
+Installation de l'application web (Désolé pour le désagrément occasionné) :
+-
+- Dézipper l'archive.zip et importer les deux projet avec l'extension.war en respectant les noms déjà attribué
+
+- Modifier le Dynamic Web Projet UtiliserVisites. Il faut changer l'adresse, nom d'utilisateur et mot de passe, dans le fichier VérifierLogin.java et CreerUtilisateur.java situé dans puis dans le package src/fr/eseo/login pour qu'ils correspondent à ceux de votre phpmyadmin. 
+- Il faudra aussi aller chercher dans le WebContent de ce projet et ouvrir TrouverVisite.jsp et changer dans l'adresse de connection à la base de données
+- Faire la même chose pour le Dynamic Web Projet GestionVisites. Dans le fichier GestionVisites.java situé dans le package src/fr/eseo/jee
+
+- Importer les deux fichier sql ClientsVisites et GestionnaireVisites recpectivement
+
+- Lancer le projet
+
+
 Outils utilisés : 
 -
 - Git pour travailler en simultané sur le même dossier projet.
 - phpMyAdmin pour implémenter puis gérer la base de données
 - eclipse : pour coder nos servlets, .jsp, .html, classes java et tests JUnit
 - Apache Tomcat 9.0
+- Apache CXF
 
 
 Améliorations apportées :
