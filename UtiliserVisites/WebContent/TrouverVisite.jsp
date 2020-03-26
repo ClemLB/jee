@@ -21,7 +21,7 @@
 	<%
     try{
     DriverManager.registerDriver(new Driver());
-	Connection connection = DriverManager.getConnection("jdbc:mysql://192.168.4.197/GestionnaireVisites","java","network");
+	Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/GestionnaireVisites","root","network");
 
     Statement statement = connection.createStatement();
     
