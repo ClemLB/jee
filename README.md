@@ -1,6 +1,8 @@
 # Visites par Virgil Tourneur, Clément Laillé, Frédéric Vezin, Clément Le Borgne
 
-// Pour la connexion adresse mail : test@jee.com et mot de passe : 1
+*Pour la connexion adresse mail : test@jee.com et mot de passe : 1*
+<br>
+*Vous pouvez également créer un compte*
 
 Installation de l'application web (Désolé pour le désagrément occasionné) :
 -
@@ -34,9 +36,7 @@ Améliorations apportées :
   - inscription en renseignant un nom, un prénom, une adresse mail et un mot de passe
 - Ajout d'un email et d'un mot de passe pour chaque client :
   - Pour ouvrir une session lié à un et un seul client
-
-
-
+  
 
 Tests effectués :
 -
@@ -61,9 +61,9 @@ Tests effectués :
 
 Connexion à un autre groupe (Taxi) :
 -
-- Nous offrons la possibilité de trouver un ou plusieurs taxis disponibles pour une date donnée en échange de quoi l'autre groupe pourra trouver les visites disponibles pour différentes conditions. 
-
-- Nous avons ouvert le port mysql, sur la machine hôte, pour tout le monde sinon la connection à la base de donées était refusée.
+Nous offrons la possibilité de trouver un ou plusieurs taxis disponibles pour une date donnée en échange de quoi l'autre groupe pourra trouver les visites disponibles pour différentes conditions. 
+<br><br>
+Nous avons ouvert le port mysql, sur la machine hôte, pour tout le monde sinon la connection à la base de donées était refusée.
 Nous ne pouvons pas accéder à la base de données des Taxis (ils n'avaient pas ouvert ce port) mais l'autre groupe a pu utilisé nos fonctions pour nos Visites sans problème.
 
 Travail effectué :
