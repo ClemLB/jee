@@ -1,5 +1,7 @@
 # Visites par Virgil Tourneur, Clément Laillé, Frédéric Vezin, Clément Le Borgne
 
+// Pour la connexion adresse mail : test@jee.com et mot de passe : 1
+
 Installation de l'application web (Désolé pour le désagrément occasionné) :
 -
 - Dézipper l'archive.zip et importer les deux projet avec l'extension.war en respectant les noms déjà attribué
